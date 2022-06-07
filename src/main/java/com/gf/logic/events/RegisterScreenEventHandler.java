@@ -11,7 +11,7 @@ public class RegisterScreenEventHandler {
         return;
     }
     
-    public boolean crearCuenta(String nombre, String clave1, String clave2) {
+    public boolean crearCuenta(String nombre, String mail, String clave1, String clave2) {
         
         return false;
     }
