@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.gf.view;
 
 import com.gf.logic.events.RegisterScreenEventHandler;
@@ -9,16 +5,17 @@ import java.util.Arrays;
 
 /**
  *
- * @author Andres
+ * @author Adrian MRV. aka AMRV || Ansuz
  */
-public class RegisterScreen extends javax.swing.JFrame {
+public class RegisterScreen extends javax.swing.JDialog {
 
     private final RegisterScreenEventHandler eventHandler = new RegisterScreenEventHandler();
 
     /**
      * Creates new form RegisterScreen
      */
-    public RegisterScreen() {
+    public RegisterScreen(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -32,93 +29,101 @@ public class RegisterScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        fieldUser = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        usuario = new javax.swing.JTextField();
-        CrearCuenta = new javax.swing.JButton();
-        Inicio = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        Contasena1 = new javax.swing.JPasswordField();
-        Contasena2 = new javax.swing.JPasswordField();
+        fieldPassword = new javax.swing.JPasswordField();
+        fieldPasswordRepeat = new javax.swing.JPasswordField();
+        buttonCrearCuenta = new javax.swing.JButton();
+        buttonVolver = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        FormListener formListener = new FormListener();
 
-        jLabel1.setText("Escribe tu nombre de usuario:");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel2.setText("Escribe tu contraseña:");
+        jLabel1.setText("Introduce tu nombre de usuario");
 
-        CrearCuenta.setText("Crear Cuenta");
-        CrearCuenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CrearCuentaActionPerformed(evt);
-            }
-        });
+        jLabel2.setText("Introduce tu contraseña");
 
-        Inicio.setText("Volver a Inicio de sesión");
-        Inicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InicioActionPerformed(evt);
-            }
-        });
+        jLabel3.setText("Reintroduce tu contraseña");
 
-        jLabel3.setText("Escribe tu contraseña de nuevo:");
+        buttonCrearCuenta.setText("Crear cuenta");
+        buttonCrearCuenta.addActionListener(formListener);
+
+        buttonVolver.setText("Volver");
+        buttonVolver.addActionListener(formListener);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Inicio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                        .addComponent(CrearCuenta)
-                        .addGap(37, 37, 37))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buttonVolver)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonCrearCuenta))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(usuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                            .addComponent(Contasena1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Contasena2, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(54, 54, 54))))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(fieldUser)
+                            .addComponent(fieldPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                            .addComponent(fieldPasswordRepeat))))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(109, 109, 109)
+                .addGap(94, 94, 94)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(fieldUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(Contasena1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                    .addComponent(fieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(Contasena2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                    .addComponent(fieldPasswordRepeat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CrearCuenta)
-                    .addComponent(Inicio))
-                .addGap(16, 16, 16))
+                    .addComponent(buttonCrearCuenta)
+                    .addComponent(buttonVolver))
+                .addGap(21, 21, 21))
         );
 
         pack();
+    }
+
+    // Code for dispatching events from components to event handlers.
+
+    private class FormListener implements java.awt.event.ActionListener {
+        FormListener() {}
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            if (evt.getSource() == buttonCrearCuenta) {
+                RegisterScreen.this.buttonCrearCuentaActionPerformed(evt);
+            }
+            else if (evt.getSource() == buttonVolver) {
+                RegisterScreen.this.buttonVolverActionPerformed(evt);
+            }
+        }
     }// </editor-fold>//GEN-END:initComponents
 
-    private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
-        eventHandler.clickVolverALogin();
-    }//GEN-LAST:event_InicioActionPerformed
+    private void buttonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearCuentaActionPerformed
+        eventHandler.crearCuenta(fieldUser.getText(), Arrays
+                .toString(fieldPassword.getPassword()), Arrays
+                .toString(fieldPasswordRepeat.getPassword()));
+    }//GEN-LAST:event_buttonCrearCuentaActionPerformed
 
-    private void CrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearCuentaActionPerformed
-        eventHandler.crearCuenta(usuario.getText(), Arrays.toString(Contasena1
-                .getPassword()), Arrays.toString(Contasena2.getPassword()));
-    }//GEN-LAST:event_CrearCuentaActionPerformed
+    private void buttonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverActionPerformed
+        eventHandler.clickVolverALogin();
+    }//GEN-LAST:event_buttonVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,22 +157,29 @@ public class RegisterScreen extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegisterScreen().setVisible(true);
+                RegisterScreen dialog = new RegisterScreen(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField Contasena1;
-    private javax.swing.JPasswordField Contasena2;
-    private javax.swing.JButton CrearCuenta;
-    private javax.swing.JButton Inicio;
+    private javax.swing.JButton buttonCrearCuenta;
+    private javax.swing.JButton buttonVolver;
+    private javax.swing.JPasswordField fieldPassword;
+    private javax.swing.JPasswordField fieldPasswordRepeat;
+    private javax.swing.JTextField fieldUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -27,28 +27,30 @@ public class LoginScreen extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Usuario = new javax.swing.JLabel();
-        Contraseña = new javax.swing.JLabel();
-        Confirmar = new javax.swing.JButton();
-        Registrarse = new javax.swing.JButton();
+        userLabel = new javax.swing.JLabel();
+        passwordLabel = new javax.swing.JLabel();
+        confirmButton = new javax.swing.JButton();
+        registerButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        usuarioTexto = new javax.swing.JTextField();
-        contrasenaTexto = new javax.swing.JTextField();
+        userText = new javax.swing.JTextField();
+        passwordText = new javax.swing.JTextField();
 
         FormListener formListener = new FormListener();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        Usuario.setText("Usuario");
+        userLabel.setText("Usuario");
 
-        Contraseña.setText("Contraseña");
+        passwordLabel.setText("Contraseña");
 
-        Confirmar.setText("Confirmar");
+        confirmButton.setText("Confirmar");
 
-        Registrarse.setText("Registrarse");
-        Registrarse.addActionListener(formListener);
+        registerButton.setText("Registrarse");
+        registerButton.addActionListener(formListener);
 
         jLabel1.setText("¿Todavía no tienes cuenta? Registrate.");
+
+        userText.addActionListener(formListener);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -59,19 +61,19 @@ public class LoginScreen extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Registrarse)
-                            .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Contraseña))
+                            .addComponent(registerButton)
+                            .addComponent(userLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passwordLabel))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                                .addComponent(Confirmar)
+                                .addComponent(confirmButton)
                                 .addGap(65, 65, 65))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(contrasenaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(usuarioTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(userText, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
@@ -83,18 +85,18 @@ public class LoginScreen extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(87, 87, 87)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Usuario)
-                    .addComponent(usuarioTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userLabel)
+                    .addComponent(userText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Contraseña)
-                    .addComponent(contrasenaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordLabel)
+                    .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Confirmar)
-                    .addComponent(Registrarse))
+                    .addComponent(confirmButton)
+                    .addComponent(registerButton))
                 .addGap(17, 17, 17))
         );
 
@@ -106,15 +108,22 @@ public class LoginScreen extends javax.swing.JDialog {
     private class FormListener implements java.awt.event.ActionListener {
         FormListener() {}
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            if (evt.getSource() == Registrarse) {
-                LoginScreen.this.RegistrarseActionPerformed(evt);
+            if (evt.getSource() == registerButton) {
+                LoginScreen.this.registerButtonActionPerformed(evt);
+            }
+            else if (evt.getSource() == userText) {
+                LoginScreen.this.userTextActionPerformed(evt);
             }
         }
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarseActionPerformed
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RegistrarseActionPerformed
+    }//GEN-LAST:event_registerButtonActionPerformed
+
+    private void userTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userTextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,12 +173,12 @@ public class LoginScreen extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Confirmar;
-    private javax.swing.JLabel Contraseña;
-    private javax.swing.JButton Registrarse;
-    private javax.swing.JLabel Usuario;
-    private javax.swing.JTextField contrasenaTexto;
+    private javax.swing.JButton confirmButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField usuarioTexto;
+    private javax.swing.JLabel passwordLabel;
+    private javax.swing.JTextField passwordText;
+    private javax.swing.JButton registerButton;
+    private javax.swing.JLabel userLabel;
+    private javax.swing.JTextField userText;
     // End of variables declaration//GEN-END:variables
 }

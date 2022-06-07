@@ -8,6 +8,7 @@ public class Controller {
  
     private final static CipherController cipher = new CipherController();
     private final static ConfigurationController config = new ConfigurationController();
+    private final static ViewController view = new ViewController();
     
     public static CipherController getCipher() {
         return cipher;
@@ -17,8 +18,8 @@ public class Controller {
         return config;
     }
     
-    public static ViewController() {
-        
+    public static ViewController getView() {
+        return view;
     }
     
 }
