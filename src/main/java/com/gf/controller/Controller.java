@@ -8,15 +8,10 @@ import com.gf.dao.UserDAO;
  */
 public class Controller {
 
-    private final static CipherController cipher = new CipherController();
     private final static ConfigurationController config = new ConfigurationController();
     private final static ViewController view = new ViewController();
     private final static PasswordController pc = new PasswordController();
     private final static UserDAO userDAO = new UserDAO();
-
-    public static CipherController getCipher() {
-        return cipher;
-    }
 
     public static ConfigurationController getConfiguration() {
         return config;

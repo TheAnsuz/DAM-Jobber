@@ -1,6 +1,7 @@
 package com.gf.application;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import com.gf.controller.Controller;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -21,5 +22,7 @@ public class Jobber {
             Logger.getLogger(Jobber.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        Controller.getView().showLoginScreen(true);
+        
     }
 }

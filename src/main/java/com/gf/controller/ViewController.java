@@ -18,18 +18,17 @@ public class ViewController {
         this.home = new HomeScreen();
         this.login = new LoginScreen(home, true);
         this.register = new RegisterScreen(home, true);
+        this.home.setVisible(true);
     }
 
     public void showLoginScreen(boolean visible) {
+        this.login.setLocationRelativeTo(home);
         this.login.setVisible(visible);
     }
 
     public void showRegisterScreen(boolean visible) {
+        this.register.setLocationRelativeTo(home);
         this.register.setVisible(visible);
-    }
-    
-    public void showHomeScreen(boolean visible) {
-        this.home.setVisible(visible);
     }
 
 }
