@@ -4,11 +4,16 @@
  */
 package com.gf.view;
 
+import com.gf.logic.events.RegisterScreenEventHandler;
+import java.util.Arrays;
+
 /**
  *
  * @author Andres
  */
 public class RegisterScreen extends javax.swing.JFrame {
+
+    private final RegisterScreenEventHandler eventHandler = new RegisterScreenEventHandler();
 
     /**
      * Creates new form RegisterScreen
@@ -28,7 +33,7 @@ public class RegisterScreen extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Usuario = new javax.swing.JTextField();
+        usuario = new javax.swing.JTextField();
         CrearCuenta = new javax.swing.JButton();
         Inicio = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -42,8 +47,18 @@ public class RegisterScreen extends javax.swing.JFrame {
         jLabel2.setText("Escribe tu contraseña:");
 
         CrearCuenta.setText("Crear Cuenta");
+        CrearCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearCuentaActionPerformed(evt);
+            }
+        });
 
         Inicio.setText("Volver a Inicio de sesión");
+        Inicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InicioActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Escribe tu contraseña de nuevo:");
 
@@ -65,10 +80,10 @@ public class RegisterScreen extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Contasena1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Contasena2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(usuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                            .addComponent(Contasena1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Contasena2, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(54, 54, 54))))
         );
         layout.setVerticalGroup(
@@ -77,7 +92,7 @@ public class RegisterScreen extends javax.swing.JFrame {
                 .addGap(109, 109, 109)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
@@ -96,6 +111,15 @@ public class RegisterScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
+        eventHandler.clickVolverALogin();
+    }//GEN-LAST:event_InicioActionPerformed
+
+    private void CrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearCuentaActionPerformed
+        eventHandler.crearCuenta(usuario.getText(), Arrays.toString(Contasena1
+                .getPassword()), Arrays.toString(Contasena2.getPassword()));
+    }//GEN-LAST:event_CrearCuentaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -106,20 +130,25 @@ public class RegisterScreen extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
+                    .getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegisterScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterScreen.class.getName())
+                    .log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegisterScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterScreen.class.getName())
+                    .log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegisterScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterScreen.class.getName())
+                    .log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegisterScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterScreen.class.getName())
+                    .log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -136,9 +165,9 @@ public class RegisterScreen extends javax.swing.JFrame {
     private javax.swing.JPasswordField Contasena2;
     private javax.swing.JButton CrearCuenta;
     private javax.swing.JButton Inicio;
-    private javax.swing.JTextField Usuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 }

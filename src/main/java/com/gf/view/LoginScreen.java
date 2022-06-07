@@ -1,11 +1,15 @@
 package com.gf.view;
 
+import com.gf.logic.events.LoginScreenEventHandler;
+
 /**
  *
  * @author Adrian MRV. aka AMRV || Ansuz
  */
 public class LoginScreen extends javax.swing.JDialog {
 
+    private final LoginScreenEventHandler eventHandler = new LoginScreenEventHandler();
+    
     /**
      * Creates new form LoginScreen
      */
@@ -70,8 +74,9 @@ public class LoginScreen extends javax.swing.JDialog {
                                     .addComponent(usuarioTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
