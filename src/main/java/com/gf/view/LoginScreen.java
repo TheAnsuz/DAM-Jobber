@@ -20,9 +20,9 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
     public LoginScreen(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         super.setTitle("Iniciar sesion");
-        super.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         super.addWindowListener(this);
         initComponents();
+        super.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     }
 
     /**

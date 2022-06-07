@@ -11,7 +11,7 @@ import javax.swing.WindowConstants;
  * @author Adrian MRV. aka AMRV || Ansuz
  */
 public final class RegisterScreen extends javax.swing.JDialog implements WindowListener {
-
+    
     private final RegisterScreenEventHandler eventHandler = new RegisterScreenEventHandler();
 
     /**
@@ -138,7 +138,8 @@ public final class RegisterScreen extends javax.swing.JDialog implements WindowL
     }//GEN-LAST:event_buttonCrearCuentaActionPerformed
 
     private void buttonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverActionPerformed
-        eventHandler.clickVolverALogin();
+        if (eventHandler.clickVolverALogin())
+            this.setVisible(false);
     }//GEN-LAST:event_buttonVolverActionPerformed
 
     /**
@@ -204,28 +205,32 @@ public final class RegisterScreen extends javax.swing.JDialog implements WindowL
     @Override
     public void windowOpened(WindowEvent e) {
     }
-
+    
     @Override
     public void windowClosing(WindowEvent e) {
         this.setVisible(false);
     }
-
+    
     @Override
     public void windowClosed(WindowEvent e) {
     }
-
+    
     @Override
     public void windowIconified(WindowEvent e) {
     }
-
+    
     @Override
     public void windowDeiconified(WindowEvent e) {
     }
-
+    
     @Override
     public void windowActivated(WindowEvent e) {
+        fieldUser.setText("");
+        fieldMail.setText("");
+        fieldPassword.setText("");
+        fieldPasswordRepeat.setText("");
     }
-
+    
     @Override
     public void windowDeactivated(WindowEvent e) {
         this.setVisible(false);

@@ -9,7 +9,7 @@ import com.gf.controller.Controller;
 public class LoginScreenEventHandler {
 
     public boolean clickConfirm(String text, String toString) {
-        return false;
+        return Controller.getUserDAO().validUser(text, toString);
     }
 
     public void clickRegister() {
@@ -19,5 +19,5 @@ public class LoginScreenEventHandler {
     public void clickForgotPassword() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-       
+
 }
