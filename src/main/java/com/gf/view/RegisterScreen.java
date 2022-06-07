@@ -1,9 +1,9 @@
 package com.gf.view;
 
+import com.gf.controller.Controller;
 import com.gf.logic.events.RegisterScreenEventHandler;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.Arrays;
 import javax.swing.WindowConstants;
 
 /**
@@ -133,9 +133,7 @@ public final class RegisterScreen extends javax.swing.JDialog implements WindowL
 
     private void buttonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearCuentaActionPerformed
         if (eventHandler
-                .crearCuenta(fieldUser.getText(), fieldMail.getText(), Arrays
-                        .toString(fieldPassword.getPassword()), Arrays
-                        .toString(fieldPasswordRepeat.getPassword())))
+                .crearCuenta(fieldUser.getText(), fieldMail.getText(), Controller.getPC().formPassword(fieldPassword.getPassword()), Controller.getPC().formPassword(fieldPasswordRepeat.getPassword())))
             this.setVisible(false);
     }//GEN-LAST:event_buttonCrearCuentaActionPerformed
 

@@ -100,4 +100,12 @@ public class PasswordController {
         return equalPassword(password1, password2) && contieneMayus(password1) && contieneMinus(password1) && contieneDigitos(password1) && contieneSimbolos(password1) && passwordLength(password1);
     }
     
+    public String formPassword(char[] letters) {
+        final StringBuilder builder = new StringBuilder();
+        for (char c : letters)
+            builder.append(c);
+        
+        return builder.toString();
+    }
+    
 }

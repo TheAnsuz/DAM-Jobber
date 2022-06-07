@@ -1,9 +1,9 @@
 package com.gf.view;
 
+import com.gf.controller.Controller;
 import com.gf.logic.events.LoginScreenEventHandler;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.Arrays;
 import javax.swing.WindowConstants;
 
 /**
@@ -167,10 +167,10 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private boolean clickConfirm() {
-        return eventHandler.clickConfirm(userText.getText(), Arrays
-                .toString(passwordText.getPassword()));
+        return eventHandler.clickConfirm(userText.getText(), Controller.getPC()
+                .formPassword(passwordText.getPassword()));
     }
-    
+
     /**
      * @param args the command line arguments
      */
