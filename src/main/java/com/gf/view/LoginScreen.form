@@ -28,21 +28,21 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="Registrarse" min="-2" max="-2" attributes="0"/>
-                          <Component id="Usuario" min="-2" pref="60" max="-2" attributes="0"/>
-                          <Component id="Contraseña" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="registerButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="userLabel" min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="passwordLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace pref="97" max="32767" attributes="0"/>
-                              <Component id="Confirmar" min="-2" max="-2" attributes="0"/>
+                              <Component id="confirmButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="contrasenaTexto" min="-2" pref="115" max="-2" attributes="0"/>
-                                  <Component id="usuarioTexto" min="-2" pref="115" max="-2" attributes="0"/>
+                                  <Component id="passwordText" min="-2" pref="115" max="-2" attributes="0"/>
+                                  <Component id="userText" min="-2" pref="115" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -61,20 +61,20 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Usuario" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="usuarioTexto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="userLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="userText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Contraseña" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="contrasenaTexto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="passwordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="passwordText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="70" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Confirmar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Registrarse" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="confirmButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="registerButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
           </Group>
@@ -82,27 +82,27 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="Usuario">
+    <Component class="javax.swing.JLabel" name="userLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Usuario"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="Contrase&#xf1;a">
+    <Component class="javax.swing.JLabel" name="passwordLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Confirmar">
+    <Component class="javax.swing.JButton" name="confirmButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Confirmar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Registrarse">
+    <Component class="javax.swing.JButton" name="registerButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrarse"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegistrarseActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -110,9 +110,12 @@
         <Property name="text" type="java.lang.String" value="&#xbf;Todav&#xed;a no tienes cuenta? Registrate."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="usuarioTexto">
+    <Component class="javax.swing.JTextField" name="userText">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userTextActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="contrasenaTexto">
+    <Component class="javax.swing.JTextField" name="passwordText">
     </Component>
   </SubComponents>
 </Form>

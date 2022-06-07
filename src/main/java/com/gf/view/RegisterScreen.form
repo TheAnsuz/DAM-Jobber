@@ -27,9 +27,9 @@
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="Inicio" min="-2" max="-2" attributes="0"/>
+                      <Component id="LoginButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="58" max="32767" attributes="0"/>
-                      <Component id="CrearCuenta" min="-2" max="-2" attributes="0"/>
+                      <Component id="createProfile" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
@@ -40,9 +40,9 @@
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Usuario" min="-2" max="-2" attributes="0"/>
-                          <Component id="Contasena1" min="-2" max="-2" attributes="0"/>
-                          <Component id="Contasena2" min="-2" max="-2" attributes="0"/>
+                          <Component id="user" min="-2" max="-2" attributes="0"/>
+                          <Component id="password" min="-2" max="-2" attributes="0"/>
+                          <Component id="password2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   </Group>
@@ -56,22 +56,22 @@
               <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Usuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="user" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <Component id="Contasena1" min="-2" max="-2" attributes="0"/>
+                  <Component id="password" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Contasena2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="password2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="46" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="CrearCuenta" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Inicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="createProfile" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="LoginButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
           </Group>
@@ -89,14 +89,17 @@
         <Property name="text" type="java.lang.String" value="Escribe tu contrase&#xf1;a:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="Usuario">
+    <Component class="javax.swing.JTextField" name="user">
     </Component>
-    <Component class="javax.swing.JButton" name="CrearCuenta">
+    <Component class="javax.swing.JButton" name="createProfile">
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear Cuenta"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createProfileActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="Inicio">
+    <Component class="javax.swing.JButton" name="LoginButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Volver a Inicio de sesi&#xf3;n"/>
       </Properties>
@@ -106,9 +109,9 @@
         <Property name="text" type="java.lang.String" value="Escribe tu contrase&#xf1;a de nuevo:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="Contasena1">
+    <Component class="javax.swing.JPasswordField" name="password">
     </Component>
-    <Component class="javax.swing.JPasswordField" name="Contasena2">
+    <Component class="javax.swing.JPasswordField" name="password2">
     </Component>
   </SubComponents>
 </Form>

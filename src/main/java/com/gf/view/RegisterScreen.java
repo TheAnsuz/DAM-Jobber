@@ -8,7 +8,7 @@ package com.gf.view;
  *
  * @author Andres
  */
-public class RegisterScreen extends javax.swing.JFrame {
+public class RegisterScreen extends javax.swing.JDialog {
 
     /**
      * Creates new form RegisterScreen
@@ -28,12 +28,12 @@ public class RegisterScreen extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Usuario = new javax.swing.JTextField();
-        CrearCuenta = new javax.swing.JButton();
-        Inicio = new javax.swing.JButton();
+        user = new javax.swing.JTextField();
+        createProfile = new javax.swing.JButton();
+        LoginButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        Contasena1 = new javax.swing.JPasswordField();
-        Contasena2 = new javax.swing.JPasswordField();
+        password = new javax.swing.JPasswordField();
+        password2 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,9 +41,14 @@ public class RegisterScreen extends javax.swing.JFrame {
 
         jLabel2.setText("Escribe tu contraseña:");
 
-        CrearCuenta.setText("Crear Cuenta");
+        createProfile.setText("Crear Cuenta");
+        createProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createProfileActionPerformed(evt);
+            }
+        });
 
-        Inicio.setText("Volver a Inicio de sesión");
+        LoginButton.setText("Volver a Inicio de sesión");
 
         jLabel3.setText("Escribe tu contraseña de nuevo:");
 
@@ -55,9 +60,9 @@ public class RegisterScreen extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Inicio)
+                        .addComponent(LoginButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                        .addComponent(CrearCuenta)
+                        .addComponent(createProfile)
                         .addGap(37, 37, 37))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -66,9 +71,9 @@ public class RegisterScreen extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Contasena1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Contasena2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(password2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(54, 54, 54))))
         );
         layout.setVerticalGroup(
@@ -77,24 +82,28 @@ public class RegisterScreen extends javax.swing.JFrame {
                 .addGap(109, 109, 109)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(Contasena1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(Contasena2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(password2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CrearCuenta)
-                    .addComponent(Inicio))
+                    .addComponent(createProfile)
+                    .addComponent(LoginButton))
                 .addGap(16, 16, 16))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void createProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createProfileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createProfileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,13 +141,13 @@ public class RegisterScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField Contasena1;
-    private javax.swing.JPasswordField Contasena2;
-    private javax.swing.JButton CrearCuenta;
-    private javax.swing.JButton Inicio;
-    private javax.swing.JTextField Usuario;
+    private javax.swing.JButton LoginButton;
+    private javax.swing.JButton createProfile;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPasswordField password;
+    private javax.swing.JPasswordField password2;
+    private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
 }
