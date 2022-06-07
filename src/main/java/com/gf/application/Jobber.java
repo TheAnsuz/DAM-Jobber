@@ -1,14 +1,12 @@
-
-
-package org.aska.jobfinder;
+package com.gf.application;
 
 /**
  *
  * @author Adrian MRV. aka AMRV || Ansuz
  */
-public class Jobfinder {
-
+public class Jobber {
+    
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
     }
 }
