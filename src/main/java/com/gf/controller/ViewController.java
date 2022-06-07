@@ -20,12 +20,16 @@ public class ViewController {
         this.register = new RegisterScreen(home, true);
     }
 
-    public void showLoginScreen() {
-        this.login.setVisible(true);
+    public void showLoginScreen(boolean visible) {
+        this.login.setVisible(visible);
     }
 
-    public void showRegisterScreen() {
-        this.register.setVisible(true);
+    public void showRegisterScreen(boolean visible) {
+        this.register.setVisible(visible);
+    }
+    
+    public void showHomeScreen(boolean visible) {
+        this.home.setVisible(visible);
     }
 
 }

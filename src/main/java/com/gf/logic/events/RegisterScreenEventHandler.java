@@ -9,15 +9,15 @@ import com.gf.entities.User;
  */
 public class RegisterScreenEventHandler {
 
-    public boolean clickVolverALogin() {
+    public void clickVolverALogin() {
 
-        return false;
+        return;
     }
 
-    public boolean crearCuenta(String nombre, String clave1, String clave2) {
+    public boolean crearCuenta(String nombre, String mail, String clave1, String clave2) {
 
         if (Controller.getPC().validPassword(clave1, clave2)) {
-            User user = new User(1, nombre, "email", clave1);
+            User user = new User(1, nombre, mail, clave1);
             Controller.getUserDAO().insertUser(user);
             return true;
         }

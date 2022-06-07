@@ -1,13 +1,16 @@
 package com.gf.view;
 
 import com.gf.logic.events.RegisterScreenEventHandler;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.Arrays;
+import javax.swing.WindowConstants;
 
 /**
  *
  * @author Adrian MRV. aka AMRV || Ansuz
  */
-public class RegisterScreen extends javax.swing.JDialog {
+public final class RegisterScreen extends javax.swing.JDialog implements WindowListener {
 
     private final RegisterScreenEventHandler eventHandler = new RegisterScreenEventHandler();
 
@@ -16,6 +19,9 @@ public class RegisterScreen extends javax.swing.JDialog {
      */
     public RegisterScreen(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        super.setTitle("Registrarse");
+        super.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        super.addWindowListener(this);
         initComponents();
     }
 
@@ -36,6 +42,8 @@ public class RegisterScreen extends javax.swing.JDialog {
         fieldPasswordRepeat = new javax.swing.JPasswordField();
         buttonCrearCuenta = new javax.swing.JButton();
         buttonVolver = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        fieldMail = new javax.swing.JTextField();
 
         FormListener formListener = new FormListener();
 
@@ -53,6 +61,8 @@ public class RegisterScreen extends javax.swing.JDialog {
         buttonVolver.setText("Volver");
         buttonVolver.addActionListener(formListener);
 
+        jLabel4.setText("Introduce tu correo electronico");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,22 +78,28 @@ public class RegisterScreen extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(fieldUser)
                             .addComponent(fieldPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                            .addComponent(fieldPasswordRepeat))))
+                            .addComponent(fieldPasswordRepeat)
+                            .addComponent(fieldMail))))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(fieldUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(fieldMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(fieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -91,7 +107,7 @@ public class RegisterScreen extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(fieldPasswordRepeat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCrearCuenta)
                     .addComponent(buttonVolver))
@@ -116,9 +132,11 @@ public class RegisterScreen extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearCuentaActionPerformed
-        eventHandler.crearCuenta(fieldUser.getText(), Arrays
-                .toString(fieldPassword.getPassword()), Arrays
-                .toString(fieldPasswordRepeat.getPassword()));
+        if (eventHandler
+                .crearCuenta(fieldUser.getText(), fieldMail.getText(), Arrays
+                        .toString(fieldPassword.getPassword()), Arrays
+                        .toString(fieldPasswordRepeat.getPassword())))
+            this.setVisible(false);
     }//GEN-LAST:event_buttonCrearCuentaActionPerformed
 
     private void buttonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverActionPerformed
@@ -175,11 +193,43 @@ public class RegisterScreen extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCrearCuenta;
     private javax.swing.JButton buttonVolver;
+    private javax.swing.JTextField fieldMail;
     private javax.swing.JPasswordField fieldPassword;
     private javax.swing.JPasswordField fieldPasswordRepeat;
     private javax.swing.JTextField fieldUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        this.setVisible(false);
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+        this.setVisible(false);
+    }
 }
