@@ -16,8 +16,8 @@ public class RegisterScreenEventHandler {
 
     public boolean crearCuenta(String nombre, String mail, String clave1, String clave2) {
 
-        if (Controller.getData().validatePassword(clave1, clave2)) {
-            User user = new User(1, nombre, mail, Controller.getData().cipher(clave1));
+        if (Controller.getData().validatePassword(clave1, clave2) && Controller.getData().validateMail(mail) && Controller.getData().validateUsername(nombre)) {
+            User user = new User(1, nombre.trim(), mail.trim(), Controller.getData().cipher(clave1));
             Controller.getUserDAO().insertUser(user);
             return true;
         }
