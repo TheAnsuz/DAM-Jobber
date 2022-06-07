@@ -1,20 +1,27 @@
 package com.gf.view;
 
 import com.gf.logic.events.LoginScreenEventHandler;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.util.Arrays;
+import javax.swing.WindowConstants;
 
 /**
  *
  * @author Adrian MRV. aka AMRV || Ansuz
  */
-public class LoginScreen extends javax.swing.JDialog {
+public class LoginScreen extends javax.swing.JDialog implements WindowListener {
 
     private final LoginScreenEventHandler eventHandler = new LoginScreenEventHandler();
-    
+
     /**
      * Creates new form LoginScreen
      */
     public LoginScreen(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        super.setTitle("Iniciar sesion");
+        super.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        super.addWindowListener(this);
         initComponents();
     }
 
@@ -33,7 +40,7 @@ public class LoginScreen extends javax.swing.JDialog {
         registerButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         userText = new javax.swing.JTextField();
-        passwordText = new javax.swing.JTextField();
+        passwordText = new javax.swing.JPasswordField();
 
         FormListener formListener = new FormListener();
 
@@ -44,41 +51,43 @@ public class LoginScreen extends javax.swing.JDialog {
         passwordLabel.setText("Contraseña");
 
         confirmButton.setText("Confirmar");
+        confirmButton.addActionListener(formListener);
 
         registerButton.setText("Registrarse");
         registerButton.addActionListener(formListener);
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("¿Todavía no tienes cuenta? Registrate.");
-
-        userText.addActionListener(formListener);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(registerButton)
-                            .addComponent(userLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordLabel))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                                .addComponent(confirmButton)
-                                .addGap(65, 65, 65))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(userText, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(passwordLabel)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(userLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                        .addComponent(confirmButton)
+                        .addGap(65, 65, 65))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(userText, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                            .addComponent(passwordText))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,20 +120,26 @@ public class LoginScreen extends javax.swing.JDialog {
             if (evt.getSource() == registerButton) {
                 LoginScreen.this.registerButtonActionPerformed(evt);
             }
-            else if (evt.getSource() == userText) {
-                LoginScreen.this.userTextActionPerformed(evt);
+            else if (evt.getSource() == confirmButton) {
+                LoginScreen.this.confirmButtonActionPerformed(evt);
             }
         }
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        // TODO add your handling code here:
+        eventHandler.clickRegister();
     }//GEN-LAST:event_registerButtonActionPerformed
 
-    private void userTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userTextActionPerformed
+    private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
+        if (clickConfirm())
+            this.setVisible(false);
+    }//GEN-LAST:event_confirmButtonActionPerformed
 
+    private boolean clickConfirm() {
+        return eventHandler.clickConfirm(userText.getText(), Arrays
+                .toString(passwordText.getPassword()));
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -176,9 +191,39 @@ public class LoginScreen extends javax.swing.JDialog {
     private javax.swing.JButton confirmButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel passwordLabel;
-    private javax.swing.JTextField passwordText;
+    private javax.swing.JPasswordField passwordText;
     private javax.swing.JButton registerButton;
     private javax.swing.JLabel userLabel;
     private javax.swing.JTextField userText;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        if (clickConfirm())
+            this.setVisible(false);
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+    }
 }

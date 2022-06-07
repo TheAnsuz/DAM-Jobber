@@ -1,13 +1,16 @@
 package com.gf.view;
 
 import com.gf.logic.events.RegisterScreenEventHandler;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.Arrays;
+import javax.swing.WindowConstants;
 
 /**
  *
  * @author Adrian MRV. aka AMRV || Ansuz
  */
-public class RegisterScreen extends javax.swing.JDialog {
+public final class RegisterScreen extends javax.swing.JDialog implements WindowListener {
 
     private final RegisterScreenEventHandler eventHandler = new RegisterScreenEventHandler();
 
@@ -16,6 +19,9 @@ public class RegisterScreen extends javax.swing.JDialog {
      */
     public RegisterScreen(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        super.setTitle("Registrarse");
+        super.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        super.addWindowListener(this);
         initComponents();
     }
 
@@ -116,9 +122,10 @@ public class RegisterScreen extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearCuentaActionPerformed
-        eventHandler.crearCuenta(fieldUser.getText(), Arrays
+        if (eventHandler.crearCuenta(fieldUser.getText(), Arrays
                 .toString(fieldPassword.getPassword()), Arrays
-                .toString(fieldPasswordRepeat.getPassword()));
+                .toString(fieldPasswordRepeat.getPassword())))
+            this.setVisible(false);
     }//GEN-LAST:event_buttonCrearCuentaActionPerformed
 
     private void buttonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverActionPerformed
@@ -182,4 +189,34 @@ public class RegisterScreen extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+            this.setVisible(false);
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+            this.setVisible(false);
+    }
 }

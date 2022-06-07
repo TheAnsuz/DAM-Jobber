@@ -6,9 +6,9 @@ package com.gf.logic.events;
  */
 public class RegisterScreenEventHandler {
     
-    public boolean clickVolverALogin() {
+    public void clickVolverALogin() {
         
-        return false;
+        return;
     }
     
     public boolean crearCuenta(String nombre, String clave1, String clave2) {
