@@ -4,6 +4,7 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,10 +34,13 @@ public class HomeScreenEventHandler {
         this.showVideo();
     }
     
+    private String[] urls = new String[] {"https://www.youtube.com/watch?v=fC7oUOUEEi4","https://www.youtube.com/watch?v=dQw4w9WgXcQ"};
+    private final Random rnd = new Random();
+    
     private void showVideo() {
         try {
-            Desktop.getDesktop().browse(new URI("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
-        } catch (URISyntaxException | IOException ex) {
+            Desktop.getDesktop().browse(new URI(urls[rnd.nextInt(urls.length)]));
+        } catch (URISyntaxException | IOException ex) { 
             Logger.getLogger(HomeScreenEventHandler.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
