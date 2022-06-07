@@ -10,7 +10,7 @@ public class Controller {
 
     private final static ConfigurationController config = new ConfigurationController();
     private final static ViewController view = new ViewController();
-    private final static PasswordController pc = new PasswordController();
+    private final static DataController data = new DataController();
     private final static UserDAO userDAO = new UserDAO();
 
     public static ConfigurationController getConfiguration() {
@@ -21,12 +21,16 @@ public class Controller {
         return view;
     }
 
-    public static PasswordController getPC() {
-        return pc;
+    public static DataController getData() {
+        return data;
     }
 
     public static UserDAO getUserDAO() {
         return userDAO;
+    }
+
+    public static void exit() {
+        System.exit(0);
     }
 
 }

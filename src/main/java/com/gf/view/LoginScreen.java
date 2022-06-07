@@ -59,9 +59,12 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("¿Todavía no tienes cuenta? Registrate.");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(formListener);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("¿Has olvidado tu contraseña?");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(formListener);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -126,17 +129,20 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
     private class FormListener implements java.awt.event.ActionListener, java.awt.event.MouseListener {
         FormListener() {}
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            if (evt.getSource() == registerButton) {
-                LoginScreen.this.registerButtonActionPerformed(evt);
-            }
-            else if (evt.getSource() == confirmButton) {
+            if (evt.getSource() == confirmButton) {
                 LoginScreen.this.confirmButtonActionPerformed(evt);
+            }
+            else if (evt.getSource() == registerButton) {
+                LoginScreen.this.registerButtonActionPerformed(evt);
             }
         }
 
         public void mouseClicked(java.awt.event.MouseEvent evt) {
             if (evt.getSource() == jLabel2) {
                 LoginScreen.this.jLabel2MouseClicked(evt);
+            }
+            else if (evt.getSource() == jLabel1) {
+                LoginScreen.this.jLabel1MouseClicked(evt);
             }
         }
 
@@ -166,56 +172,13 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
         eventHandler.clickForgotPassword();
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        eventHandler.clickRegister();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     private boolean clickConfirm() {
-        return eventHandler.clickConfirm(userText.getText(), Controller.getPC()
+        return eventHandler.clickConfirm(userText.getText(), Controller.getData()
                 .formPassword(passwordText.getPassword()));
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
-                    .getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginScreen.class.getName())
-                    .log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginScreen.class.getName())
-                    .log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginScreen.class.getName())
-                    .log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginScreen.class.getName())
-                    .log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                LoginScreen dialog = new LoginScreen(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -235,8 +198,7 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
 
     @Override
     public void windowClosing(WindowEvent e) {
-        if (clickConfirm())
-            this.setVisible(false);
+        Controller.exit();
     }
 
     @Override

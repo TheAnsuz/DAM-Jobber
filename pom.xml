@@ -3,13 +3,52 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.aska</groupId>
     <artifactId>jobber</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.2</version>
     <name>Proyecto final DAM - Jobber</name>
     <description>Proyecto de muestra de final de curso de programacion/bases de datos/entornos como muestra de nuestro entendimiento de los modelos de vista-controlador u otros</description>
+    <developers>
+        <developer>
+            <id>amrv</id>
+            <name>Adrián Martín Ruiz del valle</name>
+            <email>adrianmrv02@gmail.com</email>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>+2</timezone>
+        </developer>
+        <developer>
+            <id>kala</id>
+            <name>Javier Corcero Cabadas</name>
+            <email>electrofriki2.0@gmail.com</email>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>+2</timezone>
+        </developer>
+        <developer>
+            <id>sabri</id>
+            <name>Sabrina Toderean Bolbos</name>
+            <email>saabb.tod@gmail.com</email>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>+2</timezone>
+        </developer>
+        <developer>
+            <id>goma</id>
+            <name>Andres Bless Sastre</name>
+            <email>andres.bless@yahoo.es</email>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>+2</timezone>
+        </developer>
+    </developers>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <exec.mainClass>com.gf.application.Jobber</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>
@@ -23,4 +62,41 @@
             <version>2.1</version>
         </dependency>
     </dependencies>
+    <build>
+        <resources>
+            <resource>
+                <directory>res/</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>
+                                Trabajo entornos v${project.version}
+                            </finalName>
+                            <archive>
+                                <manifest>
+                                    <mainClass>
+                                        com.gf.application.Jobber
+                                    </mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <appendAssemblyId>false</appendAssemblyId>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

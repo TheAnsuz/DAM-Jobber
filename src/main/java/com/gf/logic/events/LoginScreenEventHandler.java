@@ -1,6 +1,7 @@
 package com.gf.logic.events;
 
 import com.gf.controller.Controller;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,7 +18,7 @@ public class LoginScreenEventHandler {
     }
 
     public void clickForgotPassword() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        JOptionPane.showMessageDialog(null, "Lo siento pero ese no es mi problema", "UPS!",JOptionPane.WARNING_MESSAGE);
     }
 
 }

@@ -45,7 +45,7 @@ public class UserDAO {
             return false;
         }
         try (Connection con = GlobalDAO.getCon()) {
-            String sqlSelect = "SELECT * FROM usuarios where nombre_usuario like '" + nombre + "' and contrasena_usuario like '" + Controller.getPC().cipher(contrasena) + "'";
+            String sqlSelect = "SELECT * FROM usuarios where nombre_usuario like '" + nombre + "' and contrasena_usuario like '" + Controller.getData().cipher(contrasena) + "'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sqlSelect);
             if (rs.next()) {
