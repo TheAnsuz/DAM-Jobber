@@ -12,6 +12,9 @@ import java.util.ArrayList;
 public class JobSelectEventHandler {
 
     public boolean clickAccept(Job job) {
+        if (job == null) {
+            return false;
+        }
         Interesa interesa = new Interesa(Controller.getUser().getId(), job.getId(), true);
         System.out.println(Controller.getUser().getId());
         Controller.getInteresaDAO().insertInteresa(interesa);
@@ -19,6 +22,9 @@ public class JobSelectEventHandler {
     }
 
     public boolean clickDeny(Job job) {
+        if (job == null) {
+            return false;
+        }
         Interesa interesa = new Interesa(Controller.getUser().getId(), job.getId(), false);
         Controller.getInteresaDAO().insertInteresa(interesa);
         return true;
@@ -26,6 +32,9 @@ public class JobSelectEventHandler {
 
     public Job requestNextJob() {
         ArrayList<Job> jobs = Controller.getJobDAO().selectEmpleos();
+        if (jobs == null) {
+            return null;
+        }
         for (int i = 0; i < jobs.size(); i++) {
             return jobs.get(i);
         }
