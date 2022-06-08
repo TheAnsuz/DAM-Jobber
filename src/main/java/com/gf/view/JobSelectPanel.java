@@ -87,6 +87,7 @@ public class JobSelectPanel extends javax.swing.JPanel {
         fieldFont.setFocusable(false);
 
         jScrollPane1.setBorder(null);
+        jScrollPane1.setMaximumSize(new java.awt.Dimension(223, 232));
         jScrollPane1.setOpaque(false);
 
         fieldDescription.setBorder(null);
@@ -96,6 +97,7 @@ public class JobSelectPanel extends javax.swing.JPanel {
         fieldDescription.setDisabledTextColor(new java.awt.Color(64, 64, 64));
         fieldDescription.setEnabled(false);
         fieldDescription.setFocusable(false);
+        fieldDescription.setMaximumSize(new java.awt.Dimension(223, 2147483647));
         fieldDescription.setOpaque(false);
         jScrollPane1.setViewportView(fieldDescription);
 
@@ -186,14 +188,14 @@ public class JobSelectPanel extends javax.swing.JPanel {
         }
 
         public void mouseReleased(java.awt.event.MouseEvent evt) {
-            if (evt.getSource() == buttonDeny) {
+            if (evt.getSource() == jPanel1) {
+                JobSelectPanel.this.jPanel1MouseReleased(evt);
+            }
+            else if (evt.getSource() == buttonDeny) {
                 JobSelectPanel.this.buttonDenyMouseReleased(evt);
             }
             else if (evt.getSource() == buttonAccept) {
                 JobSelectPanel.this.buttonAcceptMouseReleased(evt);
-            }
-            else if (evt.getSource() == jPanel1) {
-                JobSelectPanel.this.jPanel1MouseReleased(evt);
             }
         }
     }// </editor-fold>//GEN-END:initComponents
