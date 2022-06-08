@@ -34,14 +34,16 @@ public class HomeScreenEventHandler {
     public void clickOffers() {
         this.showVideo();
     }
-    
-    private String[] urls = new String[] {"https://www.youtube.com/watch?v=fC7oUOUEEi4","https://www.youtube.com/watch?v=dQw4w9WgXcQ"};
+
+    private String[] urls = new String[]{
+        "https://www.youtube.com/watch?v=fC7oUOUEEi4",
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ"};
     private final Random rnd = new Random();
-    
+
     private void showVideo() {
         try {
             Desktop.getDesktop().browse(new URI(urls[rnd.nextInt(urls.length)]));
-        } catch (URISyntaxException | IOException ex) { 
+        } catch (URISyntaxException | IOException ex) {
             Logger.getLogger(HomeScreenEventHandler.class.getName())
                     .log(Level.SEVERE, null, ex);
         }

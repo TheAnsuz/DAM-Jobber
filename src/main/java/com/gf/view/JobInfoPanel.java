@@ -12,9 +12,9 @@ import javax.swing.ImageIcon;
  * @author Adrian MRV. aka AMRV || Ansuz
  */
 public class JobInfoPanel extends javax.swing.JPanel {
-    
+
     private final JobInfoEventHandler eventHandler = new JobInfoEventHandler();
-    
+
     private final static Icon exitIcon = new ImageIcon(ResourceIO
             .resourceImage("images/cross.png", 32, 32));
     private Job job;
@@ -25,16 +25,16 @@ public class JobInfoPanel extends javax.swing.JPanel {
     public JobInfoPanel() {
         initComponents();
     }
-    
+
     public void setJob(Job job) {
         this.job = job;
         this.updateJob();
     }
-    
+
     public Job getJob() {
         return this.job;
     }
-    
+
     private void updateJob() {
         fieldIcon.setIcon(new ImageIcon(Controller.getConfiguration()
                 .getDefaultImage(96, 96)));

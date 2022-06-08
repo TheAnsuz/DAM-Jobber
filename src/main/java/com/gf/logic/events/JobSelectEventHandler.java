@@ -15,7 +15,8 @@ public class JobSelectEventHandler {
         if (job == null) {
             return false;
         }
-        Interesa interesa = new Interesa(Controller.getUser().getId(), job.getId(), true);
+        Interesa interesa = new Interesa(Controller.getUser().getId(), job
+                .getId(), true);
         Controller.getInteresaDAO().insertInteresa(interesa);
         return true;
     }
@@ -24,7 +25,8 @@ public class JobSelectEventHandler {
         if (job == null) {
             return false;
         }
-        Interesa interesa = new Interesa(Controller.getUser().getId(), job.getId(), false);
+        Interesa interesa = new Interesa(Controller.getUser().getId(), job
+                .getId(), false);
         Controller.getInteresaDAO().insertInteresa(interesa);
         return true;
     }

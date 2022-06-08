@@ -33,7 +33,7 @@ public class JobInfoEventHandler {
     public void clickGoogleButton(Job job) {
         this.showVideo();
     }
-    
+
     public void clickBackButton(Job job) {
         Controller.getView().showJobData(job);
     }

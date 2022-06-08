@@ -35,7 +35,8 @@ public class JobSelectPanel extends javax.swing.JPanel {
             fieldTitle.setText("Sin trabajo");
             fieldLocation.setText("No hay trabajos disponibles");
             fieldFont.setText("");
-            fieldDescription.setText("<html><head></head><body>" + "Espera a que las empresas<br>soliciten mas empleos" + "</body></html>");
+            fieldDescription
+                    .setText("<html><head></head><body>" + "Espera a que las empresas<br>soliciten mas empleos" + "</body></html>");
         } else {
             fieldTitle.setText(this.job.getTitulo());
             fieldLocation.setText(this.job.getLocalidad() + ", " + this.job

@@ -11,7 +11,7 @@ import javax.swing.WindowConstants;
  * @author Adrian MRV. aka AMRV || Ansuz
  */
 public final class RegisterScreen extends javax.swing.JDialog implements WindowListener {
-    
+
     private final RegisterScreenEventHandler eventHandler = new RegisterScreenEventHandler();
 
     /**
@@ -133,7 +133,10 @@ public final class RegisterScreen extends javax.swing.JDialog implements WindowL
 
     private void buttonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearCuentaActionPerformed
         if (eventHandler
-                .crearCuenta(fieldUser.getText(), fieldMail.getText(), Controller.getData().formPassword(fieldPassword.getPassword()), Controller.getData().formPassword(fieldPasswordRepeat.getPassword())))
+                .crearCuenta(fieldUser.getText(), fieldMail.getText(), Controller
+                        .getData().formPassword(fieldPassword.getPassword()), Controller
+                        .getData().formPassword(fieldPasswordRepeat
+                                .getPassword())))
             this.setVisible(false);
     }//GEN-LAST:event_buttonCrearCuentaActionPerformed
 
@@ -158,24 +161,24 @@ public final class RegisterScreen extends javax.swing.JDialog implements WindowL
     @Override
     public void windowOpened(WindowEvent e) {
     }
-    
+
     @Override
     public void windowClosing(WindowEvent e) {
         this.setVisible(false);
     }
-    
+
     @Override
     public void windowClosed(WindowEvent e) {
     }
-    
+
     @Override
     public void windowIconified(WindowEvent e) {
     }
-    
+
     @Override
     public void windowDeiconified(WindowEvent e) {
     }
-    
+
     @Override
     public void windowActivated(WindowEvent e) {
         fieldUser.setText("");
@@ -183,7 +186,7 @@ public final class RegisterScreen extends javax.swing.JDialog implements WindowL
         fieldPassword.setText("");
         fieldPasswordRepeat.setText("");
     }
-    
+
     @Override
     public void windowDeactivated(WindowEvent e) {
         this.setVisible(false);
