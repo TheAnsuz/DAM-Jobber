@@ -117,7 +117,7 @@ public class JobSelectPanel extends javax.swing.JPanel {
         buttonDeny.setMinimumSize(new java.awt.Dimension(64, 64));
         buttonDeny.setPreferredSize(new java.awt.Dimension(64, 64));
         buttonDeny.setIcon(new ImageIcon(ResourceIO.resourceImage("images/cancel128.png", buttonDeny.getWidth() < 1 ? 64 : buttonDeny.getWidth(), buttonDeny.getHeight() < 1 ? 64 : buttonDeny.getHeight())));
-        buttonDeny.addKeyListener(formListener);
+        buttonDeny.addMouseListener(formListener);
 
         buttonAccept.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonAccept.setIconTextGap(0);
@@ -125,7 +125,7 @@ public class JobSelectPanel extends javax.swing.JPanel {
         buttonAccept.setMinimumSize(new java.awt.Dimension(64, 64));
         buttonAccept.setPreferredSize(new java.awt.Dimension(64, 64));
         buttonAccept.setIcon(new ImageIcon(ResourceIO.resourceImage("images/checked128.png", buttonAccept.getWidth() < 1 ? 64 : buttonAccept.getWidth(), buttonAccept.getHeight() < 1 ? 64 : buttonAccept.getHeight())));
-        buttonAccept.addKeyListener(formListener);
+        buttonAccept.addMouseListener(formListener);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -156,35 +156,41 @@ public class JobSelectPanel extends javax.swing.JPanel {
 
     // Code for dispatching events from components to event handlers.
 
-    private class FormListener implements java.awt.event.KeyListener {
+    private class FormListener implements java.awt.event.MouseListener {
         FormListener() {}
-        public void keyPressed(java.awt.event.KeyEvent evt) {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
         }
 
-        public void keyReleased(java.awt.event.KeyEvent evt) {
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+        }
+
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+        }
+
+        public void mousePressed(java.awt.event.MouseEvent evt) {
+        }
+
+        public void mouseReleased(java.awt.event.MouseEvent evt) {
             if (evt.getSource() == buttonAccept) {
-                JobSelectPanel.this.buttonAcceptKeyReleased(evt);
+                JobSelectPanel.this.buttonAcceptMouseReleased(evt);
             }
             else if (evt.getSource() == buttonDeny) {
-                JobSelectPanel.this.buttonDenyKeyReleased(evt);
+                JobSelectPanel.this.buttonDenyMouseReleased(evt);
             }
-        }
-
-        public void keyTyped(java.awt.event.KeyEvent evt) {
         }
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonAcceptKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buttonAcceptKeyReleased
+    private void buttonAcceptMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAcceptMouseReleased
         if (eventHandler.clickAccept(this.getJob())) {
             this.setJob(eventHandler.requestNextJob());
         }
-    }//GEN-LAST:event_buttonAcceptKeyReleased
+    }//GEN-LAST:event_buttonAcceptMouseReleased
 
-    private void buttonDenyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buttonDenyKeyReleased
+    private void buttonDenyMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonDenyMouseReleased
         if (eventHandler.clickDeny(this.getJob())) {
             this.setJob(eventHandler.requestNextJob());
         }
-    }//GEN-LAST:event_buttonDenyKeyReleased
+    }//GEN-LAST:event_buttonDenyMouseReleased
 
     public void requestJob() {
         this.setJob(eventHandler.requestNextJob());

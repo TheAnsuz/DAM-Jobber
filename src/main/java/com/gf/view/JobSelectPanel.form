@@ -167,7 +167,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="buttonDenyKeyReleased"/>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonDenyMouseReleased"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="buttonDeny.setIcon(new ImageIcon(ResourceIO.resourceImage(&quot;images/cancel128.png&quot;, buttonDeny.getWidth() &lt; 1 ? 64 : buttonDeny.getWidth(), buttonDeny.getHeight() &lt; 1 ? 64 : buttonDeny.getHeight())));"/>
@@ -190,7 +190,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="buttonAcceptKeyReleased"/>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonAcceptMouseReleased"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="buttonAccept.setIcon(new ImageIcon(ResourceIO.resourceImage(&quot;images/checked128.png&quot;, buttonAccept.getWidth() &lt; 1 ? 64 : buttonAccept.getWidth(), buttonAccept.getHeight() &lt; 1 ? 64 : buttonAccept.getHeight())));"/>
