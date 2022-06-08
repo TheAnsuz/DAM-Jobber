@@ -31,6 +31,7 @@ public class JobSelectPanel extends javax.swing.JPanel {
     }
 
     private void updateJob() {
+        System.out.println(this.getJob().toString());
         fieldTitle.setText(this.job.getTitulo());
         fieldLocation.setText(this.job.getLocalidad() + ", " + this.job
                 .getProvincia());
@@ -197,7 +198,7 @@ public class JobSelectPanel extends javax.swing.JPanel {
     public void requestJob() {
         this.setJob(eventHandler.requestNextJob());
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel buttonAccept;
     private javax.swing.JLabel buttonDeny;
