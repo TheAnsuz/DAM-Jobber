@@ -56,4 +56,9 @@ public class Job {
         return provincia;
     }
 
+    @Override
+    public String toString() {
+        return "Job{" + "id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", localidad=" + localidad + ", fuente=" + fuente + ", url=" + url + ", provincia=" + provincia + '}';
+    }
+
 }

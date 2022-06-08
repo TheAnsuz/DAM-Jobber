@@ -11,8 +11,6 @@ import java.util.ArrayList;
  */
 public class JobSelectEventHandler {
 
-    private int count = 0;
-    
     public boolean clickAccept(Job job) {
         Interesa interesa = new Interesa(Controller.getUser().getId(), job.getId(), true);
         System.out.println(Controller.getUser().getId());
@@ -28,7 +26,10 @@ public class JobSelectEventHandler {
 
     public Job requestNextJob() {
         ArrayList<Job> jobs = Controller.getJobDAO().selectEmpleos();
-        return jobs.get(count++);
+        for (int i = 0; i < jobs.size(); i++) {
+            return jobs.get(i);
+        }
+        return null;
     }
 
 }
