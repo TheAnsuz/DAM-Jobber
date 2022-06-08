@@ -18,14 +18,7 @@ import java.util.function.Consumer;
 public class ConfigurationController {
 
     public ConfigurationController() {
-        Controller.getConfiguration().reload();
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            @Override
-            public void run() {
-                Controller.getConfiguration().save();
-            }
-
-        });
+        this.reload();
     }
 
     public BufferedImage getDefaultImage(int width, int height) {
@@ -53,7 +46,6 @@ public class ConfigurationController {
 //
 //        });
 //    }
-
     /**
      * Checks if the configuration file exists and can be read.
      *

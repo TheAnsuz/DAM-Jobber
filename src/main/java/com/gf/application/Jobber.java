@@ -23,6 +23,15 @@ public class Jobber {
         }
 
         Controller.verify();
+
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                Controller.getConfiguration().save();
+            }
+
+        });
+
         Controller.getView().showLoginScreen();
 
     }
