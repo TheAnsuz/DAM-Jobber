@@ -1,5 +1,7 @@
 package com.gf.controller;
 
+import com.gf.dao.InteresaDAO;
+import com.gf.dao.JobDAO;
 import com.gf.dao.UserDAO;
 
 /**
@@ -12,6 +14,8 @@ public class Controller {
     private final static ViewController view = new ViewController();
     private final static DataController data = new DataController();
     private final static UserDAO userDAO = new UserDAO();
+    private final static JobDAO jobDAO = new JobDAO();
+    private final static InteresaDAO interesaDAO = new InteresaDAO();
 
     public static ConfigurationController getConfiguration() {
         return config;
@@ -27,6 +31,14 @@ public class Controller {
 
     public static UserDAO getUserDAO() {
         return userDAO;
+    }
+
+    public static JobDAO getJobDAO() {
+        return jobDAO;
+    }
+
+    public static InteresaDAO getInteresaDAO() {
+        return interesaDAO;
     }
 
     public static void exit() {

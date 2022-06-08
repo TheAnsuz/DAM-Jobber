@@ -1,6 +1,9 @@
 package com.gf.logic.events;
 
+import com.gf.controller.Controller;
+import com.gf.entities.Interesa;
 import com.gf.entities.Job;
+import com.gf.entities.User;
 
 /**
  *
@@ -8,13 +11,15 @@ import com.gf.entities.Job;
  */
 public class JobSelectEventHandler {
 
-    public boolean clickAccept(Job job) {
-
+    public boolean clickAccept(Job job, User user) {
+        Interesa interesa = new Interesa(user.getId(), job.getId(), true);
+        Controller.getInteresaDAO().insertInteresa(interesa);
         return false;
     }
 
-    public boolean clickDeny(Job job) {
-
+    public boolean clickDeny(Job job, User user) {
+        Interesa interesa = new Interesa(user.getId(), job.getId(), false);
+        Controller.getInteresaDAO().insertInteresa(interesa);
         return false;
     }
 
