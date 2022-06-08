@@ -239,9 +239,9 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
 
     @Override
     public void windowActivated(WindowEvent e) {
-        userText.setText(Controller.getConfiguration()
-                .getDefaultConfig("login.password", ""));
         passwordText.setText(Controller.getConfiguration()
+                .getDefaultConfig("login.password", ""));
+        userText.setText(Controller.getConfiguration()
                 .getDefaultConfig("login.username", ""));
     }
 

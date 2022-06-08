@@ -20,12 +20,18 @@ public class Controller {
     private static User loggedUser = null;
 
     public static void verify() {
-        config = new ConfigurationController();
-        view = new ViewController();
-        data = new DataController();
-        userDAO = new UserDAO();
-        jobDAO = new JobDAO();
-        interesaDAO = new InteresaDAO();
+        if (config == null)
+            config = new ConfigurationController();
+        if (view == null)
+            view = new ViewController();
+        if (data == null)
+            data = new DataController();
+        if (userDAO == null)
+            userDAO = new UserDAO();
+        if (jobDAO == null)
+            jobDAO = new JobDAO();
+        if (interesaDAO == null)
+            interesaDAO = new InteresaDAO();
     }
 
     public static void setUser(User user) {

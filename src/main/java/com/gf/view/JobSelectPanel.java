@@ -72,6 +72,7 @@ public class JobSelectPanel extends javax.swing.JPanel {
 
         jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 4, true));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.addMouseListener(formListener);
 
         fieldTitle.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
