@@ -1,13 +1,17 @@
 package com.gf.controller;
 
+import com.gf.entities.Job;
 import com.gf.logic.ResourceIO;
 import com.gf.view.HomeScreen;
 import com.gf.view.InfoDialog;
+import com.gf.view.JobInfoPanel;
+import com.gf.view.JobSelectPanel;
 import com.gf.view.LoginScreen;
 import com.gf.view.RegisterScreen;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -20,23 +24,49 @@ public class ViewController {
     private final RegisterScreen register;
     private final InfoDialog infoDialog;
     private final Icon errorIcon = new ImageIcon(ResourceIO.resourceImage("images/error.png", 64, 64));
+    private final JobSelectPanel jobPanel;
+    private final JobInfoPanel jobInfoPanel;
 
+    private JPanel lastPanel = null;
+    
     public ViewController() {
+        this.jobPanel = new JobSelectPanel();
+        this.jobInfoPanel = new JobInfoPanel();
         this.home = new HomeScreen();
         this.infoDialog = new InfoDialog(home, true);
         this.login = new LoginScreen(home, true);
         this.register = new RegisterScreen(home, true);
+        this.home.setInteriorPanel(jobInfoPanel);
+        this.jobPanel.requestJob();
+        this.home.setInteriorPanel(this.jobPanel);
         this.home.setVisible(true);
     }
 
-    public void showLoginScreen(boolean visible) {
+    public void back() {
+        if (lastPanel == null)
+            return;
+        
+        this.home.setInteriorPanel(lastPanel);
+    }
+    
+    public void showJobInfo(Job job) {
+        this.jobInfoPanel.setJob(job);
+        this.home.setInteriorPanel(jobInfoPanel);
+    }
+    
+     public void showJobData(Job job) {
+        this.jobPanel.setJob(job);
+        this.home.setInteriorPanel(jobPanel);
+    }
+    
+    public void showLoginScreen() {
         this.login.setLocationRelativeTo(home);
-        this.login.setVisible(visible);
+        this.login.setVisible(true);
     }
 
-    public void showRegisterScreen(boolean visible) {
+    public void showRegisterScreen() {
         this.register.setLocationRelativeTo(home);
-        this.register.setVisible(visible);
+        this.register.setVisible(true);
     }
 
     public void showInfoDialog(String title, String... description) {

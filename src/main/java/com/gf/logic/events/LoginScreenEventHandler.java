@@ -14,7 +14,7 @@ public class LoginScreenEventHandler {
     }
 
     public void clickRegister() {
-        Controller.getView().showRegisterScreen(true);
+        Controller.getView().showRegisterScreen();
     }
 
     public void clickForgotPassword() {

@@ -1,5 +1,6 @@
 package com.gf.logic;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -127,7 +129,8 @@ public class ResourceIO {
     public static BufferedImage resourceImage(String path, int width, int height) {
         final BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         try {
-            img.createGraphics().drawImage(ImageIO.read(ResourceIO
+            final Graphics2D g = img.createGraphics();
+            g.drawImage(ImageIO.read(ResourceIO
                     .resourceStream(path)), 0, 0, width, height, null);
             return img;
         } catch (IOException | NullPointerException | IllegalArgumentException ex) {
