@@ -1,6 +1,7 @@
 package com.gf.controller;
 
 import com.gf.dao.UserDAO;
+import com.gf.entities.User;
 
 /**
  *
@@ -12,6 +13,18 @@ public class Controller {
     private final static ViewController view = new ViewController();
     private final static DataController data = new DataController();
     private final static UserDAO userDAO = new UserDAO();
+    private static User loggedUser = null;
+
+    public static void setUser(User user) {
+        Controller.loggedUser = user;
+    }
+
+    public static User getUser() {
+        if (loggedUser == null) {
+            Controller.getView().showLoginScreen();
+        }
+        return loggedUser;
+    }
 
     public static ConfigurationController getConfiguration() {
         return config;

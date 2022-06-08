@@ -1,6 +1,7 @@
 package com.gf.logic.events;
 
 import com.gf.controller.Controller;
+import com.gf.entities.User;
 import javax.swing.JOptionPane;
 
 /**
@@ -10,7 +11,8 @@ import javax.swing.JOptionPane;
 public class LoginScreenEventHandler {
 
     public boolean clickConfirm(String text, String toString) {
-        return Controller.getUserDAO().validUser(text, toString);
+        final User user = Controller.getUserDAO().validUser(text, toString);
+        return user != null;
     }
 
     public void clickRegister() {
@@ -18,7 +20,8 @@ public class LoginScreenEventHandler {
     }
 
     public void clickForgotPassword() {
-        JOptionPane.showMessageDialog(null, "Lo siento pero ese no es mi problema", "UPS!",JOptionPane.WARNING_MESSAGE);
+        JOptionPane
+                .showMessageDialog(null, "Lo siento pero ese no es mi problema", "UPS!", JOptionPane.WARNING_MESSAGE);
     }
 
 }

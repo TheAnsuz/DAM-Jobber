@@ -38,22 +38,22 @@ public class UserDAO {
         return resultado;
     }
 
-    public boolean validUser(String nombre, String contrasena) {
+    public User validUser(String nombre, String contrasena) {
         if (nombre == null || contrasena == null) {
-            return false;
+            return null;
         }
         if (nombre.trim().length() < 1 || contrasena.trim().length() < 1) {
-            return false;
+            return null;
         }
         try (Connection con = GlobalDAO.conectarBD()) {
             if (con.isClosed()) {
-                return false;
+                return null;
             }
             String sqlSelect = "SELECT * FROM usuarios where nombre_usuario like '" + nombre + "' and contrasena_usuario like '" + Controller.getData().cipher(contrasena) + "'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sqlSelect);
             if (rs.next()) {
-                return true;
+                return createUser(rs);
             }
             rs.close();
 
@@ -61,7 +61,11 @@ public class UserDAO {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error de validar user", "Valid user", JOptionPane.ERROR_MESSAGE);
         }
-        return false;
+        return null;
+    }
+    
+    private User createUser(ResultSet result) throws SQLException {
+        return new User(result.getInt(1), result.getString(2), result.getString(3), null);
     }
 
 }
