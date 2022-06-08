@@ -12,14 +12,16 @@ import java.util.ArrayList;
 public class JobSelectEventHandler {
 
     public boolean clickAccept(Job job) {
-        Interesa interesa = new Interesa(Controller.getUser().getId(), job.getId(), true);
+        Interesa interesa = new Interesa(Controller.getUser().getId(), job
+                .getId(), true);
         System.out.println(Controller.getUser().getId());
         Controller.getInteresaDAO().insertInteresa(interesa);
         return true;
     }
 
     public boolean clickDeny(Job job) {
-        Interesa interesa = new Interesa(Controller.getUser().getId(), job.getId(), false);
+        Interesa interesa = new Interesa(Controller.getUser().getId(), job
+                .getId(), false);
         Controller.getInteresaDAO().insertInteresa(interesa);
         return true;
     }
@@ -30,6 +32,12 @@ public class JobSelectEventHandler {
             return jobs.get(i);
         }
         return null;
+    }
+
+    public void clickJob(Job job) {
+        if (job == null)
+            return;
+        Controller.getView().showJobInfo(job);
     }
 
 }

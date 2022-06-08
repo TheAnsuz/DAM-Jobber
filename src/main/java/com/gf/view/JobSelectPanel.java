@@ -72,14 +72,18 @@ public class JobSelectPanel extends javax.swing.JPanel {
 
         jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 4, true));
+        jPanel1.addMouseListener(formListener);
 
         fieldTitle.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         fieldTitle.setText("<Titulo empleo>");
+        fieldTitle.setFocusable(false);
 
         fieldLocation.setText("<Ubicacion>");
+        fieldLocation.setFocusable(false);
 
         fieldFont.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         fieldFont.setText("<Fuente>");
+        fieldFont.setFocusable(false);
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setOpaque(false);
@@ -90,6 +94,7 @@ public class JobSelectPanel extends javax.swing.JPanel {
         fieldDescription.setCaretColor(new java.awt.Color(64, 64, 64));
         fieldDescription.setDisabledTextColor(new java.awt.Color(64, 64, 64));
         fieldDescription.setEnabled(false);
+        fieldDescription.setFocusable(false);
         fieldDescription.setOpaque(false);
         jScrollPane1.setViewportView(fieldDescription);
 
@@ -186,6 +191,9 @@ public class JobSelectPanel extends javax.swing.JPanel {
             else if (evt.getSource() == buttonAccept) {
                 JobSelectPanel.this.buttonAcceptMouseReleased(evt);
             }
+            else if (evt.getSource() == jPanel1) {
+                JobSelectPanel.this.jPanel1MouseReleased(evt);
+            }
         }
     }// </editor-fold>//GEN-END:initComponents
 
@@ -200,6 +208,10 @@ public class JobSelectPanel extends javax.swing.JPanel {
             this.setJob(eventHandler.requestNextJob());
         }
     }//GEN-LAST:event_buttonDenyMouseReleased
+
+    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
+        eventHandler.clickJob(this.getJob());
+    }//GEN-LAST:event_jPanel1MouseReleased
 
     public void requestJob() {
         this.setJob(eventHandler.requestNextJob());
