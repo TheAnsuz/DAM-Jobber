@@ -12,6 +12,7 @@ public class JobSelectEventHandler {
 
     public boolean clickAccept(Job job) {
         Interesa interesa = new Interesa(Controller.getUser().getId(), job.getId(), true);
+        System.out.println(Controller.getUser().getId());
         Controller.getInteresaDAO().insertInteresa(interesa);
         return false;
     }
@@ -23,6 +24,7 @@ public class JobSelectEventHandler {
     }
 
     public Job requestNextJob() {
+
         return new Job(1231, "Trabajo de club de alterne", "<b>Se buscan machos de pelo en pecho</b><br>Prohibido mayores de 16", "Valladolid", "Junta de castilla y leon", "ni puta idea", "Castilla y leon");
     }
 

@@ -41,7 +41,7 @@ public class ViewController {
         this.jobPanel.requestJob();
         this.home.setInteriorPanel(this.jobPanel);
         this.home.setVisible(true);
-        Controller.getUser();
+//        Controller.getUser();
     }
 
     public void back() {

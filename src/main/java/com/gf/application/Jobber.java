@@ -22,8 +22,8 @@ public class Jobber {
             Logger.getLogger(Jobber.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        Controller.getView();
-//        Controller.getView().showLoginScreen(true);
-        
+//        Controller.getView();
+        Controller.getView().showLoginScreen();
+
     }
 }
