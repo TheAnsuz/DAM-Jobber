@@ -23,6 +23,8 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
         super.addWindowListener(this);
         initComponents();
         super.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        checkUserMaintain.setSelected(Controller.getConfiguration().getConfig("login.username").length() > 0);
+        checkPasswordMaintain.setSelected(Controller.getConfiguration().getConfig("login.password").length() > 0);
     }
 
     /**
@@ -237,7 +239,7 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
 
     @Override
     public void windowActivated(WindowEvent e) {
-        passwordText.setText(Controller.getConfiguration()
+        userText.setText(Controller.getConfiguration()
                 .getDefaultConfig("login.password", ""));
         passwordText.setText(Controller.getConfiguration()
                 .getDefaultConfig("login.username", ""));
