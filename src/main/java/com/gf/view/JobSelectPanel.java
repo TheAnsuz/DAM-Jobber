@@ -31,13 +31,19 @@ public class JobSelectPanel extends javax.swing.JPanel {
     }
 
     private void updateJob() {
-        System.out.println(this.getJob().toString());
-        fieldTitle.setText(this.job.getTitulo());
-        fieldLocation.setText(this.job.getLocalidad() + ", " + this.job
-                .getProvincia());
-        fieldFont.setText(this.job.getFuente());
-        fieldDescription.setText("<html><head></head><body>" + this.job
-                .getDescripcion() + "</body></html>");
+        if (this.job == null) {
+            fieldTitle.setText("Sin trabajo");
+            fieldLocation.setText("No hay trabajos disponibles");
+            fieldFont.setText("");
+            fieldDescription.setText("<html><head></head><body>" + "Espera a que las empresas<br>soliciten mas empleos" + "</body></html>");
+        } else {
+            fieldTitle.setText(this.job.getTitulo());
+            fieldLocation.setText(this.job.getLocalidad() + ", " + this.job
+                    .getProvincia());
+            fieldFont.setText(this.job.getFuente());
+            fieldDescription.setText("<html><head></head><body>" + this.job
+                    .getDescripcion() + "</body></html>");
+        }
     }
 
     /**
