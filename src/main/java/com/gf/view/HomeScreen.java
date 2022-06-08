@@ -9,15 +9,15 @@ import com.gf.logic.ResourceIO;
 import com.gf.logic.events.HomeScreenEventHandler;
 import java.awt.Component;
 import java.awt.Insets;
-import java.util.Arrays;
-import javax.swing.JPanel;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.UIManager;
 
 /**
  *
  * @author Andres
  */
-public class HomeScreen extends javax.swing.JFrame {
+public final class HomeScreen extends javax.swing.JFrame {
 
     private final HomeScreenEventHandler eventHandler = new HomeScreenEventHandler();
 
@@ -26,19 +26,18 @@ public class HomeScreen extends javax.swing.JFrame {
      */
     public HomeScreen() {
         initComponents();
-        super.setIconImage(ResourceIO.resourceImage("images/icon.png",32,32));
+        setInteriorPanel(logoDisplay);
+        super.setIconImage(ResourceIO.resourceImage("images/icon.png", 32, 32));
         super.setLocationRelativeTo(null);
         super.setTitle("Jobber");
     }
-    
-    public void setInteriorPanel(JPanel panel) {
+
+    public void setInteriorPanel(JComponent panel) {
         panelView.removeAll();
         panelView.add(panel);
         panelView.repaint();
-        super.pack();
-        System.out.println(Arrays.toString(panelView.getComponents()));
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,10 +47,18 @@ public class HomeScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        logoDisplay = new javax.swing.JLabel();
         panelView = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listView = new javax.swing.JList<>();
         fieldSearch = new javax.swing.JTextField();
+
+        logoDisplay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logoDisplay.setIcon(new ImageIcon(ResourceIO.resourceImage("images/logo.png", 256, 80)));
+        logoDisplay.setToolTipText("");
+        logoDisplay.setMaximumSize(new java.awt.Dimension(256, 80));
+        logoDisplay.setMinimumSize(new java.awt.Dimension(256, 80));
+        logoDisplay.setPreferredSize(new java.awt.Dimension(256, 80));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -104,6 +111,7 @@ public class HomeScreen extends javax.swing.JFrame {
     private javax.swing.JTextField fieldSearch;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> listView;
+    private javax.swing.JLabel logoDisplay;
     private javax.swing.JPanel panelView;
     // End of variables declaration//GEN-END:variables
 }

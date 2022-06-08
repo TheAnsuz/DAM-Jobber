@@ -11,13 +11,22 @@ import com.gf.entities.User;
  */
 public class Controller {
 
-    private final static ConfigurationController config = new ConfigurationController();
-    private final static ViewController view = new ViewController();
-    private final static DataController data = new DataController();
-    private final static UserDAO userDAO = new UserDAO();
-    private final static JobDAO jobDAO = new JobDAO();
-    private final static InteresaDAO interesaDAO = new InteresaDAO();
+    private static ConfigurationController config = new ConfigurationController();
+    private static ViewController view = new ViewController();
+    private static DataController data = new DataController();
+    private static UserDAO userDAO = new UserDAO();
+    private static JobDAO jobDAO = new JobDAO();
+    private static InteresaDAO interesaDAO = new InteresaDAO();
     private static User loggedUser = null;
+
+    public static void verify() {
+        config = new ConfigurationController();
+        view = new ViewController();
+        data = new DataController();
+        userDAO = new UserDAO();
+        jobDAO = new JobDAO();
+        interesaDAO = new InteresaDAO();
+    }
 
     public static void setUser(User user) {
         Controller.loggedUser = user;

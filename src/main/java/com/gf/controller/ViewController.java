@@ -37,9 +37,9 @@ public class ViewController {
 //        this.infoDialog = new InfoDialog(home, true);
         this.login = new LoginScreen(home, true);
         this.register = new RegisterScreen(home, true);
-        this.home.setInteriorPanel(jobInfoPanel);
-        this.jobPanel.requestJob();
-        this.home.setInteriorPanel(this.jobPanel);
+//        this.home.setInteriorPanel(jobInfoPanel);
+//        this.jobPanel.requestJob();
+//        this.home.setInteriorPanel(this.jobPanel);
         this.home.setVisible(true);
 //        Controller.getUser();
     }
@@ -52,12 +52,14 @@ public class ViewController {
     }
 
     public void showJobInfo(Job job) {
-        this.jobInfoPanel.setJob(job);
         this.home.setInteriorPanel(jobInfoPanel);
     }
 
     public void showJobData(Job job) {
-        this.jobPanel.setJob(job);
+        if (job == null)
+            this.jobPanel.requestJob();
+        else
+            this.jobPanel.setJob(job);
         this.home.setInteriorPanel(jobPanel);
     }
 

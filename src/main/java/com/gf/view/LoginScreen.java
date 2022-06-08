@@ -164,8 +164,10 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
-        if (clickConfirm())
+        if (clickConfirm()) {
             this.setVisible(false);
+            Controller.getView().showJobData(null);
+        }
     }//GEN-LAST:event_confirmButtonActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked

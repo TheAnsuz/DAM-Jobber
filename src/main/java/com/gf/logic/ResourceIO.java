@@ -1,6 +1,7 @@
 package com.gf.logic;
 
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,7 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -23,6 +23,22 @@ import javax.imageio.ImageIO;
 public class ResourceIO {
 
     private static final BufferedImage DEFAULT_IMAGE = new BufferedImage(32, 32, BufferedImage.TYPE_4BYTE_ABGR_PRE);
+    private static final RenderingHints renderingHints = createHints();
+
+    private static RenderingHints createHints() {
+        final RenderingHints temp = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        temp
+                .put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        temp
+                .put(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+        temp
+                .put(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        temp
+                .put(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
+        temp
+                .put(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+        return temp;
+    }
 
     /**
      * Obtains {@code File} using the given path.
@@ -53,7 +69,7 @@ public class ResourceIO {
      */
     public static StringBuilder resourceData(String path) {
         final StringBuilder builder = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(ResourceIO
+        try ( BufferedReader reader = new BufferedReader(new InputStreamReader(ResourceIO
                 .resourceStream(path)))) {
 
             while (reader.ready()) {
@@ -76,7 +92,7 @@ public class ResourceIO {
      */
     public static String[] resourceArray(String path) {
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(ResourceIO
+        try ( BufferedReader reader = new BufferedReader(new InputStreamReader(ResourceIO
                 .resourceStream(path)))) {
 
             Object[] lines = reader.lines().toArray();
@@ -130,6 +146,7 @@ public class ResourceIO {
         final BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         try {
             final Graphics2D g = img.createGraphics();
+            g.setRenderingHints(renderingHints);
             g.drawImage(ImageIO.read(ResourceIO
                     .resourceStream(path)), 0, 0, width, height, null);
             return img;
@@ -186,7 +203,7 @@ public class ResourceIO {
      * @return an array of strings that contains the data of the file
      */
     public static String[] storedArray(String path) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(ResourceIO
+        try ( BufferedReader reader = new BufferedReader(new FileReader(ResourceIO
                 .storedFile(path)))) {
 
             Object[] lines = reader.lines().toArray();
@@ -207,7 +224,7 @@ public class ResourceIO {
      */
     public static StringBuilder storedData(String path) {
         final StringBuilder builder = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(ResourceIO
+        try ( BufferedReader reader = new BufferedReader(new InputStreamReader(ResourceIO
                 .resourceStream(path)))) {
 
             while (reader.ready()) {
@@ -238,7 +255,7 @@ public class ResourceIO {
             if (!createFile(file))
                 return false;
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+        try ( BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
 
             for (int i = 0; i < array.length; i++) {
                 if (array[i] == null)
@@ -275,7 +292,7 @@ public class ResourceIO {
             if (!createFile(file))
                 return false;
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+        try ( BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(data.toString());
             return true;
 
