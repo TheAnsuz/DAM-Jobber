@@ -1,6 +1,6 @@
 package pruebas;
 
-import com.gf.view.InfoDialog;
+import com.gf.controller.Controller;
 
 /**
  *
@@ -9,8 +9,9 @@ import com.gf.view.InfoDialog;
 public class DialogTests {
 
     public static void main(String[] args) {
-        InfoDialog dialog = new InfoDialog(null, false);
-        dialog.setText("Me cago en tu putisima madre hijo de remil putas", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo");
-        dialog.setVisible(true);
+//        InfoDialog dialog = new InfoDialog(null, false);
+//        dialog.setText("Me cago en tu putisima madre hijo de remil putas", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo", "Autismo");
+//        dialog.setVisible(true);
+        Controller.getView().showWarning("Subnormal");
     }
 }
