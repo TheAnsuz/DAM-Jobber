@@ -59,6 +59,8 @@ public class JobSelectPanel extends javax.swing.JPanel {
 
         FormListener formListener = new FormListener();
 
+        setMaximumSize(new java.awt.Dimension(255, 435));
+        setMinimumSize(new java.awt.Dimension(255, 435));
         setOpaque(false);
 
         jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
@@ -171,11 +173,11 @@ public class JobSelectPanel extends javax.swing.JPanel {
         }
 
         public void mouseReleased(java.awt.event.MouseEvent evt) {
-            if (evt.getSource() == buttonAccept) {
-                JobSelectPanel.this.buttonAcceptMouseReleased(evt);
-            }
-            else if (evt.getSource() == buttonDeny) {
+            if (evt.getSource() == buttonDeny) {
                 JobSelectPanel.this.buttonDenyMouseReleased(evt);
+            }
+            else if (evt.getSource() == buttonAccept) {
+                JobSelectPanel.this.buttonAcceptMouseReleased(evt);
             }
         }
     }// </editor-fold>//GEN-END:initComponents
