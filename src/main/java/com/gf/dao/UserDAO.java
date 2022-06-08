@@ -22,7 +22,7 @@ public class UserDAO {
     public int insertUser(User user) {
         int resultado = 0;
         String sqlInsert = "";
-        try (Connection con = GlobalDAO.getCon()) {
+        try (Connection con = GlobalDAO.conectarBD()) {
             sqlInsert = "INSERT INTO usuarios (id_usuario, nombre_usuario, correo_usuario, contrasena_usuario) VALUES (null, ?, ?, ?)";
             PreparedStatement ps = con.prepareCall(sqlInsert);
             ps.setString(1, user.getUsername());
@@ -33,7 +33,7 @@ public class UserDAO {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error de BD", "Insert", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error de insercion usuarios", "Insert users", JOptionPane.ERROR_MESSAGE);
         }
         return resultado;
     }
@@ -45,7 +45,7 @@ public class UserDAO {
         if (nombre.trim().length() < 1 || contrasena.trim().length() < 1) {
             return false;
         }
-        try (Connection con = GlobalDAO.getCon()) {
+        try (Connection con = GlobalDAO.conectarBD()) {
             if (con.isClosed()) {
                 return false;
             }
@@ -59,7 +59,7 @@ public class UserDAO {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error de BD", "Select", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error de validar user", "Valid user", JOptionPane.ERROR_MESSAGE);
         }
         return false;
     }
