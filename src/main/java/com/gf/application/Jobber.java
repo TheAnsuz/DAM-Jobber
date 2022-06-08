@@ -15,7 +15,6 @@ public class Jobber {
 
     public static void main(String[] args) {
         FlatLightLaf.setup();
-
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (UnsupportedLookAndFeelException ex) {

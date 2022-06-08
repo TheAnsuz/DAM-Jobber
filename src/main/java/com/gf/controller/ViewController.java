@@ -45,23 +45,26 @@ public class ViewController {
     }
 
     public void back() {
-        if (lastPanel == null)
+        if (lastPanel == null) {
             return;
+        }
 
         this.home.setInteriorPanel(lastPanel);
     }
 
     public void showJobInfo(Job job) {
+        this.jobInfoPanel.setJob(job);
         this.home.setInteriorPanel(jobInfoPanel);
         this.lastPanel = jobInfoPanel;
     }
 
     public void showJobData(Job job) {
-        System.out.println("Funsiona?");
-        if (job == null)
+//        System.out.println("Funsiona?");
+        if (job == null) {
             this.jobPanel.requestJob();
-        else
+        } else {
             this.jobPanel.setJob(job);
+        }
         this.home.setInteriorPanel(jobPanel);
         this.lastPanel = jobPanel;
     }

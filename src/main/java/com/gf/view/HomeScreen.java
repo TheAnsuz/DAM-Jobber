@@ -38,7 +38,7 @@ public final class HomeScreen extends javax.swing.JFrame {
         panelView.add(panel);
         super.pack();
         panelView.repaint();
-        System.out.println(Arrays.toString(panelView.getComponents()));
+//        System.out.println(Arrays.toString(panelView.getComponents()));
     }
 
     /**

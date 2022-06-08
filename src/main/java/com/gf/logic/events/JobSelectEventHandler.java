@@ -16,7 +16,6 @@ public class JobSelectEventHandler {
             return false;
         }
         Interesa interesa = new Interesa(Controller.getUser().getId(), job.getId(), true);
-        System.out.println(Controller.getUser().getId());
         Controller.getInteresaDAO().insertInteresa(interesa);
         return true;
     }
