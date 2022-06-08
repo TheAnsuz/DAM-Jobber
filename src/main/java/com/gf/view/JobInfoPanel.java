@@ -83,7 +83,7 @@ public class JobInfoPanel extends javax.swing.JPanel {
         buttonGoogleMaps.setForeground(new java.awt.Color(102, 153, 255));
         buttonGoogleMaps.setText("Ver en Google maps");
         buttonGoogleMaps.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buttonGoogleMaps.addKeyListener(formListener);
+        buttonGoogleMaps.addMouseListener(formListener);
 
         fieldFont.setText("<Fuente del empleo>");
 
@@ -96,6 +96,7 @@ public class JobInfoPanel extends javax.swing.JPanel {
         jLabel1.setMaximumSize(new java.awt.Dimension(32, 32));
         jLabel1.setMinimumSize(new java.awt.Dimension(32, 32));
         jLabel1.setPreferredSize(new java.awt.Dimension(32, 32));
+        jLabel1.addMouseListener(formListener);
         jLabel1.addKeyListener(formListener);
 
         fieldDescription.setContentType("text/html"); // NOI18N
@@ -157,7 +158,7 @@ public class JobInfoPanel extends javax.swing.JPanel {
 
     // Code for dispatching events from components to event handlers.
 
-    private class FormListener implements java.awt.event.KeyListener {
+    private class FormListener implements java.awt.event.KeyListener, java.awt.event.MouseListener {
         FormListener() {}
         public void keyPressed(java.awt.event.KeyEvent evt) {
         }
@@ -166,12 +167,30 @@ public class JobInfoPanel extends javax.swing.JPanel {
             if (evt.getSource() == jLabel1) {
                 JobInfoPanel.this.jLabel1KeyReleased(evt);
             }
-            else if (evt.getSource() == buttonGoogleMaps) {
-                JobInfoPanel.this.buttonGoogleMapsKeyReleased(evt);
-            }
         }
 
         public void keyTyped(java.awt.event.KeyEvent evt) {
+        }
+
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+        }
+
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+        }
+
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+        }
+
+        public void mousePressed(java.awt.event.MouseEvent evt) {
+        }
+
+        public void mouseReleased(java.awt.event.MouseEvent evt) {
+            if (evt.getSource() == jLabel1) {
+                JobInfoPanel.this.jLabel1MouseReleased(evt);
+            }
+            else if (evt.getSource() == buttonGoogleMaps) {
+                JobInfoPanel.this.buttonGoogleMapsMouseReleased(evt);
+            }
         }
     }// </editor-fold>//GEN-END:initComponents
 
@@ -179,9 +198,13 @@ public class JobInfoPanel extends javax.swing.JPanel {
         Controller.getView().back();
     }//GEN-LAST:event_jLabel1KeyReleased
 
-    private void buttonGoogleMapsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buttonGoogleMapsKeyReleased
+    private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
+        eventHandler.clickBackButton(this.getJob());
+    }//GEN-LAST:event_jLabel1MouseReleased
+
+    private void buttonGoogleMapsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonGoogleMapsMouseReleased
         eventHandler.clickGoogleButton(this.getJob());
-    }//GEN-LAST:event_buttonGoogleMapsKeyReleased
+    }//GEN-LAST:event_buttonGoogleMapsMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

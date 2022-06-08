@@ -1,5 +1,6 @@
 package com.gf.logic.events;
 
+import com.gf.controller.Controller;
 import com.gf.entities.Job;
 import java.awt.Desktop;
 import java.io.IOException;
@@ -31,6 +32,10 @@ public class JobInfoEventHandler {
 
     public void clickGoogleButton(Job job) {
         this.showVideo();
+    }
+    
+    public void clickBackButton(Job job) {
+        Controller.getView().showJobData(job);
     }
 
 }
