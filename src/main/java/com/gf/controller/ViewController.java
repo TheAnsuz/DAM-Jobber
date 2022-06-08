@@ -53,6 +53,7 @@ public class ViewController {
 
     public void showJobInfo(Job job) {
         this.home.setInteriorPanel(jobInfoPanel);
+        this.lastPanel = jobInfoPanel;
     }
 
     public void showJobData(Job job) {
@@ -62,6 +63,7 @@ public class ViewController {
         else
             this.jobPanel.setJob(job);
         this.home.setInteriorPanel(jobPanel);
+        this.lastPanel = jobPanel;
     }
 
     public void showLoginScreen() {

@@ -12,6 +12,7 @@ public class LoginScreenEventHandler {
 
     public boolean clickConfirm(String text, String toString) {
         final User user = Controller.getUserDAO().validUser(text, toString);
+        Controller.setUser(user);
         return user != null;
     }
 
