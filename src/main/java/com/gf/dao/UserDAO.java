@@ -32,6 +32,7 @@ public class UserDAO {
             ps.close();
 
         } catch (SQLException ex) {
+            ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error de BD", "Insert", JOptionPane.ERROR_MESSAGE);
         }
         return resultado;
