@@ -2,7 +2,6 @@ package com.gf.logic.events;
 
 import com.gf.controller.Controller;
 import com.gf.entities.User;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,6 +12,9 @@ public class LoginScreenEventHandler {
     public boolean clickConfirm(String text, String toString) {
         final User user = Controller.getUserDAO().validUser(text, toString);
         Controller.setUser(user);
+        if (user == null)
+            Controller.getView()
+                    .showWarning("Datos de inicio de sesion invalidos");
         return user != null;
     }
 
@@ -21,16 +23,18 @@ public class LoginScreenEventHandler {
     }
 
     public void clickForgotPassword() {
-        JOptionPane
-                .showMessageDialog(null, "Lo siento pero ese no es mi problema", "UPS!", JOptionPane.WARNING_MESSAGE);
+        Controller.getView()
+                .showInfoDialog("UPS", "Error al obtener los empleos interesantes");
     }
 
     public void shouldMaintainPassword(boolean selected, String password) {
-        Controller.getConfiguration().setConfig("login.password", selected ? password : "");
+        Controller.getConfiguration()
+                .setConfig("login.password", selected ? password : "");
     }
 
     public void shouldMaintainUser(boolean selected, String username) {
-        Controller.getConfiguration().setConfig("login.username", selected ? username : "");
+        Controller.getConfiguration()
+                .setConfig("login.username", selected ? username : "");
     }
 
 }

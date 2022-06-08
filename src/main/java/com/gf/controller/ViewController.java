@@ -79,6 +79,11 @@ public class ViewController {
         this.register.setVisible(true);
     }
 
+    public void showInfoDialog(String title, String description) {
+        JOptionPane
+                .showMessageDialog(home, description, "AVISO", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
     public void showInfoDialog(String title, String... description) {
         JOptionPane
                 .showMessageDialog(home, String.join("\n", description), title

@@ -1,5 +1,6 @@
 package com.gf.dao;
 
+import com.gf.controller.Controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -30,8 +31,11 @@ public class GlobalDAO {
         try {
             con = DriverManager.getConnection(url, user, passwd);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error de conexión a la BD", "Conexión BD", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(GlobalDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Controller.getView()
+                    .showWarning("Error al conectar a la base de datos");
+//            JOptionPane.showMessageDialog(null, "Error de conexión a la BD", "Conexión BD", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GlobalDAO.class.getName())
+                    .log(Level.SEVERE, null, ex);
         }
         return con;
     }

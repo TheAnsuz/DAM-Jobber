@@ -5,11 +5,14 @@
 package com.gf.view;
 
 import com.formdev.flatlaf.ui.FlatLineBorder;
+import com.gf.entities.Job;
 import com.gf.logic.ResourceIO;
 import com.gf.logic.events.HomeScreenEventHandler;
 import java.awt.Component;
 import java.awt.Insets;
-import java.util.Arrays;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.UIManager;
@@ -18,9 +21,10 @@ import javax.swing.UIManager;
  *
  * @author Andres
  */
-public final class HomeScreen extends javax.swing.JFrame {
+public final class HomeScreen extends javax.swing.JFrame implements WindowListener {
 
     private final HomeScreenEventHandler eventHandler = new HomeScreenEventHandler();
+    private final DefaultListModel<Job> listModel = new DefaultListModel<>();
 
     /**
      * Creates new form HomeScreen
@@ -31,6 +35,7 @@ public final class HomeScreen extends javax.swing.JFrame {
         super.setIconImage(ResourceIO.resourceImage("images/icon.png", 32, 32));
         super.setLocationRelativeTo(null);
         super.setTitle("Jobber");
+        super.addWindowListener(this);
     }
 
     public void setInteriorPanel(JComponent panel) {
@@ -74,11 +79,7 @@ public final class HomeScreen extends javax.swing.JFrame {
         panelView.setAlignmentY(Component.CENTER_ALIGNMENT);
         panelView.setLayout(new java.awt.GridBagLayout());
 
-        listView.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        listView.setModel(listModel);
         jScrollPane1.setViewportView(listView);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -113,8 +114,39 @@ public final class HomeScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField fieldSearch;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> listView;
+    private javax.swing.JList<Job> listView;
     private javax.swing.JLabel logoDisplay;
     private javax.swing.JPanel panelView;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        listModel.clear();
+        for (Job job : eventHandler.loadInterests())
+            listModel.addElement(job);
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+    }
 }

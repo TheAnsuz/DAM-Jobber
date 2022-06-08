@@ -15,13 +15,30 @@ public class RegisterScreenEventHandler {
     }
 
     public boolean crearCuenta(String nombre, String mail, String clave1, String clave2) {
-
-        if (Controller.getData().validatePassword(clave1, clave2) && Controller.getData().validateMail(mail) && Controller.getData().validateUsername(nombre)) {
-            User user = new User(1, nombre.trim(), mail.trim(), Controller.getData().cipher(clave1));
-            Controller.getUserDAO().insertUser(user);
-            return true;
+        if (!Controller.getData().validateUsername(nombre)) {
+            Controller.getView()
+                    .showWarning("No se permite ese nombre de usuario");
+            return false;
         }
-        return false;
+
+        if (!Controller.getData().validateMail(mail)) {
+            Controller.getView().showWarning("El orreo electronico no valido");
+            return false;
+        }
+
+        if (!Controller.getData().validatePassword(clave1)) {
+            Controller.getView()
+                    .showWarning("Las contraseñas deben de tener 8 caracteres como minimo, contener mayusculas, minusculas, numeros y simbolos");
+        }
+
+        if (!Controller.getData().validatePassword(clave1, clave2)) {
+            Controller.getView().showWarning("Las contraseñas no coinciden");
+        }
+
+        User user = new User(1, nombre.trim(), mail.trim(), Controller
+                .getData().cipher(clave1));
+        Controller.getUserDAO().insertUser(user);
+        return true;
     }
 
 }

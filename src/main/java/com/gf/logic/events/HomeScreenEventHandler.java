@@ -1,5 +1,6 @@
 package com.gf.logic.events;
 
+import com.gf.entities.Job;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
@@ -44,5 +45,9 @@ public class HomeScreenEventHandler {
             Logger.getLogger(HomeScreenEventHandler.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
+    }
+
+    public Iterable<Job> loadInterests() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
