@@ -44,6 +44,10 @@ public class ViewController {
 //        Controller.getUser();
     }
 
+    public void updateShownJobs() {
+        this.home.updateInterests();
+    }
+    
     public void back() {
         if (lastPanel == null) {
             return;

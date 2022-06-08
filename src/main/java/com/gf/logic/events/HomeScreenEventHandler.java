@@ -1,10 +1,15 @@
 package com.gf.logic.events;
 
+import com.gf.controller.Controller;
+import com.gf.dao.JobDAO;
+import com.gf.entities.Interesa;
 import com.gf.entities.Job;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -50,6 +55,6 @@ public class HomeScreenEventHandler {
     }
 
     public Iterable<Job> loadInterests() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new ArrayList<>();
     }
 }

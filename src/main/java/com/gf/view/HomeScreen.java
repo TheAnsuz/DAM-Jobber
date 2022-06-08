@@ -12,6 +12,7 @@ import java.awt.Component;
 import java.awt.Insets;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
@@ -44,6 +45,12 @@ public final class HomeScreen extends javax.swing.JFrame implements WindowListen
         super.pack();
         panelView.repaint();
 //        System.out.println(Arrays.toString(panelView.getComponents()));
+    }
+
+    public void updateInterests() {
+        listModel.clear();
+        for (Job job : eventHandler.loadInterests())
+            listModel.addElement(job);
     }
 
     /**
@@ -141,9 +148,7 @@ public final class HomeScreen extends javax.swing.JFrame implements WindowListen
 
     @Override
     public void windowActivated(WindowEvent e) {
-        listModel.clear();
-        for (Job job : eventHandler.loadInterests())
-            listModel.addElement(job);
+        this.updateInterests();
     }
 
     @Override
