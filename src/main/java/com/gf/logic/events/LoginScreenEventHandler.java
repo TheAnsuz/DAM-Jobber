@@ -25,4 +25,12 @@ public class LoginScreenEventHandler {
                 .showMessageDialog(null, "Lo siento pero ese no es mi problema", "UPS!", JOptionPane.WARNING_MESSAGE);
     }
 
+    public void shouldMaintainPassword(boolean selected, String password) {
+        Controller.getConfiguration().setConfig("login.password", selected ? password : "");
+    }
+
+    public void shouldMaintainUser(boolean selected, String username) {
+        Controller.getConfiguration().setConfig("login.username", selected ? username : "");
+    }
+
 }

@@ -17,38 +17,49 @@ import java.util.function.Consumer;
  */
 public class ConfigurationController {
 
-    public static BufferedImage getDefaultImage(int width, int height) {
-        return ResourceIO.resourceImage("images/undefined.png", width, height);
-    }
-
-    private static final Map<String, String> values = new HashMap<>();
-    private static final List<ConfigurationControllerListener> listeners = new ArrayList<>();
-
-    public static final String FILE = "config.properties";
-    public static final char SEPARATOR = '=';
-
-    /**
-     * This method will simply run at the start of the program, right after the
-     * main class is processed and will add a hook to save the data to a file
-     * whenever the application stops.
-     */
-    static {
-        ConfigurationController.reload();
+    public ConfigurationController() {
+        Controller.getConfiguration().reload();
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
             public void run() {
-                ConfigurationController.save();
+                Controller.getConfiguration().save();
             }
 
         });
     }
+
+    public BufferedImage getDefaultImage(int width, int height) {
+        return ResourceIO.resourceImage("images/undefined.png", width, height);
+    }
+
+    private final Map<String, String> values = new HashMap<>();
+    private final List<ConfigurationControllerListener> listeners = new ArrayList<>();
+
+    public static final String FILE = "config.properties";
+    public static final char SEPARATOR = '=';
+
+//    /**
+//     * This method will simply run at the start of the program, right after the
+//     * main class is processed and will add a hook to save the data to a file
+//     * whenever the application stops.
+//     */
+//    static {
+//        Controller.getConfiguration().reload();
+//        Runtime.getRuntime().addShutdownHook(new Thread() {
+//            @Override
+//            public void run() {
+//                Controller.getConfiguration().save();
+//            }
+//
+//        });
+//    }
 
     /**
      * Checks if the configuration file exists and can be read.
      *
      * @return true if the configuration file exists, false otherwise
      */
-    public static boolean exists() {
+    public boolean exists() {
         return new File(FILE).canRead();
     }
 
@@ -61,8 +72,8 @@ public class ConfigurationController {
      * @param key the key of the configuration
      * @param value the value of the configuration
      */
-    public static void setDefault(String key, String value) {
-        if (ConfigurationController.hasConfig(key))
+    public void setDefault(String key, String value) {
+        if (this.hasConfig(key))
             return;
         setConfig(key, value);
     }
@@ -70,7 +81,7 @@ public class ConfigurationController {
     /**
      * Reads the data from the configuration file
      */
-    public static void reload() {
+    public void reload() {
         String[] data = ResourceIO.storedArray(FILE);
 
         for (String line : data)
@@ -84,8 +95,8 @@ public class ConfigurationController {
      * @return true if the loaded data contains a value for the key, false
      * otherwise
      */
-    public static boolean hasConfig(String key) {
-        return ConfigurationController.getConfig(key.trim()).length() > 0;
+    public boolean hasConfig(String key) {
+        return this.getConfig(key.trim()).length() > 0;
     }
 
     /**
@@ -96,7 +107,7 @@ public class ConfigurationController {
      * @return the value of that configuration key or an empty string if no
      * value is found
      */
-    public static String getConfig(String key) {
+    public String getConfig(String key) {
         final String value = values.get(key.trim());
         return value == null ? "" : value;
     }
@@ -110,7 +121,7 @@ public class ConfigurationController {
      * configuration is found
      * @return the value of that configuration or the defaultValue
      */
-    public static String getDefaultConfig(String key, String defaultValue) {
+    public String getDefaultConfig(String key, String defaultValue) {
         setDefault(key, defaultValue);
         return getConfig(key);
     }
@@ -125,7 +136,7 @@ public class ConfigurationController {
      * @param value the value to be replaced with
      * @return true if the configuration was set, false otherwise
      */
-    public static boolean setConfig(String key, String value) {
+    public boolean setConfig(String key, String value) {
         key = key.trim();
         final String old = getConfig(key);
         value = value.trim();
@@ -164,7 +175,7 @@ public class ConfigurationController {
      * @throws NullPointerException if the specified action is null
      * @since 1.8
      */
-    public static void forEach(BiConsumer<? super String, ? super String> action) {
+    public void forEach(BiConsumer<? super String, ? super String> action) {
         values.forEach(action);
     }
 
@@ -182,7 +193,7 @@ public class ConfigurationController {
      *
      * @return a set view of the mappings contained in this map
      */
-    public static Set<Map.Entry<String, String>> entrySet() {
+    public Set<Map.Entry<String, String>> entrySet() {
         return values.entrySet();
     }
 
@@ -192,7 +203,7 @@ public class ConfigurationController {
      *
      * @param listener the ConfigurationControllerListener to be added
      */
-    public static void addListener(ConfigurationControllerListener listener) {
+    public void addListener(ConfigurationControllerListener listener) {
         listeners.add(listener);
     }
 
@@ -202,7 +213,7 @@ public class ConfigurationController {
      *
      * @param listener the ConfigurationControllerListener to be removed
      */
-    public static void removeListener(ConfigurationControllerListener listener) {
+    public void removeListener(ConfigurationControllerListener listener) {
         listeners.remove(listener);
     }
 
@@ -214,7 +225,7 @@ public class ConfigurationController {
      * @return true if the configuration will notify the listener, false
      * otherwise
      */
-    public static boolean hasListener(ConfigurationControllerListener listener) {
+    public boolean hasListener(ConfigurationControllerListener listener) {
         return listeners.contains(listener);
     }
 
@@ -239,7 +250,7 @@ public class ConfigurationController {
      * @throws NullPointerException if the specified action is null
      * @since 1.8
      */
-    public static void forEach(Consumer<? super ConfigurationControllerListener> action) {
+    public void forEach(Consumer<? super ConfigurationControllerListener> action) {
         listeners.forEach(action);
     }
 
@@ -249,7 +260,7 @@ public class ConfigurationController {
      *
      * @return the list of ConfigurationControllerListeners
      */
-    public static List<ConfigurationControllerListener> getListeners() {
+    public List<ConfigurationControllerListener> getListeners() {
         return listeners;
     }
 
@@ -260,7 +271,7 @@ public class ConfigurationController {
      *
      * @return true if the configuration was saved succesfully.
      */
-    public static boolean save() {
+    public boolean save() {
         if (values.isEmpty())
             return false;
 
@@ -274,7 +285,7 @@ public class ConfigurationController {
         return ResourceIO.saveArray(FILE, data);
     }
 
-    private static void parseData(String line) {
+    private void parseData(String line) {
         final int index = line.indexOf(SEPARATOR);
 
         if (index >= 0) {

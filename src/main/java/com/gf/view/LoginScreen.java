@@ -42,6 +42,8 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
         userText = new javax.swing.JTextField();
         passwordText = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
+        checkPasswordMaintain = new javax.swing.JCheckBox();
+        checkUserMaintain = new javax.swing.JCheckBox();
 
         FormListener formListener = new FormListener();
 
@@ -67,6 +69,10 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(formListener);
 
+        checkPasswordMaintain.setText("Mantener");
+
+        checkUserMaintain.setText("Mantener");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,7 +97,11 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(userText, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                             .addComponent(passwordText))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(checkPasswordMaintain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(checkUserMaintain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,11 +115,13 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
                 .addGap(87, 87, 87)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userLabel)
-                    .addComponent(userText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkUserMaintain))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel)
-                    .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkPasswordMaintain))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -138,11 +150,11 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
         }
 
         public void mouseClicked(java.awt.event.MouseEvent evt) {
-            if (evt.getSource() == jLabel2) {
-                LoginScreen.this.jLabel2MouseClicked(evt);
-            }
-            else if (evt.getSource() == jLabel1) {
+            if (evt.getSource() == jLabel1) {
                 LoginScreen.this.jLabel1MouseClicked(evt);
+            }
+            else if (evt.getSource() == jLabel2) {
+                LoginScreen.this.jLabel2MouseClicked(evt);
             }
         }
 
@@ -164,6 +176,11 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
+        eventHandler.shouldMaintainUser(checkUserMaintain.isSelected(), userText
+                .getText());
+        eventHandler
+                .shouldMaintainPassword(checkUserMaintain.isSelected(), Controller
+                        .getData().formPassword(passwordText.getPassword()));
         if (clickConfirm()) {
             this.setVisible(false);
             Controller.getView().showJobData(null);
@@ -179,11 +196,14 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private boolean clickConfirm() {
-        return eventHandler.clickConfirm(userText.getText(), Controller.getData()
+        return eventHandler.clickConfirm(userText.getText(), Controller
+                .getData()
                 .formPassword(passwordText.getPassword()));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox checkPasswordMaintain;
+    private javax.swing.JCheckBox checkUserMaintain;
     private javax.swing.JButton confirmButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -217,6 +237,10 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
 
     @Override
     public void windowActivated(WindowEvent e) {
+        passwordText.setText(Controller.getConfiguration()
+                .getDefaultConfig("login.password", ""));
+        passwordText.setText(Controller.getConfiguration()
+                .getDefaultConfig("login.username", ""));
     }
 
     @Override
