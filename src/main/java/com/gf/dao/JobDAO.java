@@ -23,7 +23,7 @@ public class JobDAO {
         Job job = null;
         ArrayList<Job> jobs = new ArrayList<>();
         try (Connection con = GlobalDAO.conectarBD()) {
-            String sqlSelect = "SELECT * FROM empleados";
+            String sqlSelect = "SELECT * FROM empleo";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sqlSelect);
             while (rs.next()) {

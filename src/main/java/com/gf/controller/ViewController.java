@@ -56,6 +56,7 @@ public class ViewController {
     }
 
     public void showJobData(Job job) {
+        System.out.println("Funsiona?");
         if (job == null)
             this.jobPanel.requestJob();
         else

@@ -3,6 +3,7 @@ package com.gf.logic.events;
 import com.gf.controller.Controller;
 import com.gf.entities.Interesa;
 import com.gf.entities.Job;
+import java.util.ArrayList;
 
 /**
  *
@@ -10,6 +11,8 @@ import com.gf.entities.Job;
  */
 public class JobSelectEventHandler {
 
+    private int count = 0;
+    
     public boolean clickAccept(Job job) {
         Interesa interesa = new Interesa(Controller.getUser().getId(), job.getId(), true);
         System.out.println(Controller.getUser().getId());
@@ -24,8 +27,8 @@ public class JobSelectEventHandler {
     }
 
     public Job requestNextJob() {
-
-        return new Job(1231, "Trabajo de club de alterne", "<b>Se buscan machos de pelo en pecho</b><br>Prohibido mayores de 16", "Valladolid", "Junta de castilla y leon", "ni puta idea", "Castilla y leon");
+        ArrayList<Job> jobs = Controller.getJobDAO().selectEmpleos();
+        return jobs.get(count++);
     }
 
 }

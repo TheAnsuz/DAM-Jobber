@@ -9,6 +9,7 @@ import com.gf.logic.ResourceIO;
 import com.gf.logic.events.HomeScreenEventHandler;
 import java.awt.Component;
 import java.awt.Insets;
+import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.UIManager;
@@ -35,7 +36,9 @@ public final class HomeScreen extends javax.swing.JFrame {
     public void setInteriorPanel(JComponent panel) {
         panelView.removeAll();
         panelView.add(panel);
+        super.pack();
         panelView.repaint();
+        System.out.println(Arrays.toString(panelView.getComponents()));
     }
 
     /**
