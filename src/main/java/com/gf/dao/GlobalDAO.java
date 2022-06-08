@@ -2,7 +2,10 @@ package com.gf.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,39 +13,27 @@ import java.sql.Statement;
  */
 public class GlobalDAO {
 
-    private static String url = "jdbc:mysql://localhost:3306/jobber";
-    private static Connection con;
-    public static Statement st;
-
-     public static void conectarBaseDatos(){
-        try {
-            con = DriverManager.getConnection(url, "root", "");
-            st = con.createStatement();
-        } catch (Exception e) {
-            System.out.println("Error");
-        }
-    }
-     
-     public static void conexion(){
-         if (con == null){
-             conectarBaseDatos();
-         } else {
-             System.out.println("Ya estas conectado a la base de datos");
-         }
-     }
+    public static String host = "localhost";
+    public static String database = "jobber";
+    public static String puerto = "3306";
+    public static String user = "root";
+    public static String passwd = "";
+    public static String url = "jdbc:mysql://" + host + ":" + puerto + "/" + database;
 
     public static String getUrl() {
         return url;
     }
 
-    public static Connection getCon() {
-        conexion();
+    public static Connection con;
+
+    public static Connection conectarBD() {
+        try {
+            con = DriverManager.getConnection(url, user, passwd);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexión a la BD", "Conexión BD", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GlobalDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return con;
     }
 
-    public static Statement getSt() {
-        return st;
-    }
-    
-    
 }
