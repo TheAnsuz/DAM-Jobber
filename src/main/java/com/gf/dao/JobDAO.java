@@ -23,7 +23,6 @@ public class JobDAO {
     public ArrayList selectEmpleos() {
         Job job = null;
         ArrayList<Job> jobs = new ArrayList<>();
-        System.out.println(Controller.getUser().getId());
         try (Connection con = GlobalDAO.conectarBD()) {
             String sqlSelect = "SELECT id_empleo, titulo_empleo, descripcion_empleo, localidad_empleo, fuente_empleo, url_empleo, provincia_empleo "
                     + "FROM empleo "
