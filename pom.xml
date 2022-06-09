@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.aska</groupId>
     <artifactId>jobber</artifactId>
-    <version>1.2</version>
+    <version>1.3.1</version>
     <name>Proyecto final DAM - Jobber</name>
     <description>Proyecto de muestra de final de curso de programacion/bases de datos/entornos como muestra de nuestro entendimiento de los modelos de vista-controlador u otros</description>
     <developers>
