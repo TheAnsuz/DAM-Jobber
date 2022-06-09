@@ -30,7 +30,7 @@ public class ViewController {
 
     private JPanel lastPanel = null;
 
-    public ViewController() {
+    protected ViewController() {
         this.jobPanel = new JobSelectPanel();
         this.jobInfoPanel = new JobInfoPanel();
         this.home = new HomeScreen();

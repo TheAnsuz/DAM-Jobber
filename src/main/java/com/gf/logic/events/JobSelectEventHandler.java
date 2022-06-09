@@ -11,6 +11,13 @@ import java.util.ArrayList;
  */
 public class JobSelectEventHandler {
 
+    /**
+     * Evento al hacer click en aceptar un trabajo
+     *
+     * @param job el trabajo aceptado
+     * @return true si se puede aceptar el trabajo y se debe de pasar al
+     * siguiente
+     */
     public boolean clickAccept(Job job) {
         if (job == null) {
             return false;
@@ -21,6 +28,13 @@ public class JobSelectEventHandler {
         return true;
     }
 
+    /**
+     * Evento al hacer click en denegar un trabajo
+     *
+     * @param job el trabajo denegado
+     * @return true si se puede denegar el trabajo y se debe de pasar al
+     * siguiente
+     */
     public boolean clickDeny(Job job) {
         if (job == null) {
             return false;
@@ -31,6 +45,12 @@ public class JobSelectEventHandler {
         return true;
     }
 
+    /**
+     * Evento que solicita al controlador el siguiente trabajo de la base de
+     * datos para mostrar en la vista al usuario
+     *
+     * @return el trabajo a mostrar o null si no hay trabajos disponibles
+     */
     public Job requestNextJob() {
         ArrayList<Job> jobs = Controller.getJobDAO().selectEmpleos();
         if (jobs == null) {

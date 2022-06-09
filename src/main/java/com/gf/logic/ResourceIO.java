@@ -17,6 +17,8 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
+ * Esta clase forma parte de mi libreria privada de metodos, de ahi que este en
+ * ingles
  *
  * @author Adrian MRV. aka AMRV || Ansuz (org.amrv)
  */

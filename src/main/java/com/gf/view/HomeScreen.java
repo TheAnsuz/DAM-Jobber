@@ -12,7 +12,6 @@ import java.awt.Component;
 import java.awt.Insets;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
@@ -37,6 +36,7 @@ public final class HomeScreen extends javax.swing.JFrame implements WindowListen
         super.setLocationRelativeTo(null);
         super.setTitle("Jobber");
         super.addWindowListener(this);
+//        listView.setCellRenderer(cellRenderer);
     }
 
     public void setInteriorPanel(JComponent panel) {
@@ -154,4 +154,5 @@ public final class HomeScreen extends javax.swing.JFrame implements WindowListen
     @Override
     public void windowDeactivated(WindowEvent e) {
     }
+
 }

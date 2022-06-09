@@ -9,11 +9,26 @@ import com.gf.entities.User;
  */
 public class RegisterScreenEventHandler {
 
+    /**
+     * Evento al hacer click en el boton para volver al login
+     *
+     * @return true si debe de volver al login, false para evitar que vuelva
+     */
     public boolean clickVolverALogin() {
 
         return true;
     }
 
+    /**
+     * Evento que verifica la creacion de una cuenta
+     *
+     * @param nombre nombre del usuario
+     * @param mail correo electronico del usuario
+     * @param clave1 clave que ha introducido
+     * @param clave2 verificacion de clave introducia
+     * @return true si la cuenta se ha creado y el registro se puede completar,
+     * falso si no
+     */
     public boolean crearCuenta(String nombre, String mail, String clave1, String clave2) {
         if (!Controller.getData().validateUsername(nombre)) {
             Controller.getView()

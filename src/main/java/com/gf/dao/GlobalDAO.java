@@ -13,22 +13,36 @@ import java.util.logging.Logger;
  */
 public class GlobalDAO {
 
-    public static String host = "localhost";
-    public static String database = "jobber";
-    public static String puerto = "3306";
-    public static String user = "root";
-    public static String passwd = "";
-    public static String url = "jdbc:mysql://" + host + ":" + puerto + "/" + database;
+    private static String host = Controller.getConfiguration()
+            .getDefaultConfig("sql.host", "localhost");
+    private static String database = Controller.getConfiguration()
+            .getDefaultConfig("sql.database", "jobber");
+    private static String puerto = Controller.getConfiguration()
+            .getDefaultConfig("sql.port", "3306");
+    private static String user = Controller.getConfiguration()
+            .getDefaultConfig("sql.user", "root");
+    private static String passwd = Controller.getConfiguration()
+            .getDefaultConfig("sql.pass", "");
 
+    /**
+     * Obtiene la url de la conexion a la base de datos
+     *
+     * @return la url de conexion
+     */
     public static String getUrl() {
-        return url;
+        return "jdbc:mysql://" + host + ":" + puerto + "/" + database;
     }
 
-    public static Connection con;
+    private static Connection con;
 
+    /**
+     * Crea una conexion a la base de datos de la aplicacion
+     *
+     * @return una instancia de la conexion a la base de datos
+     */
     public static Connection conectarBD() {
         try {
-            con = DriverManager.getConnection(url, user, passwd);
+            con = DriverManager.getConnection(getUrl());
         } catch (SQLException ex) {
             Controller.getView()
                     .showWarning("Error al conectar a la base de datos");

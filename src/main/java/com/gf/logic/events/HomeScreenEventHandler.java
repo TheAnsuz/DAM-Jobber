@@ -20,40 +20,65 @@ import java.util.logging.Logger;
  */
 public class HomeScreenEventHandler {
 
+    /**
+     * Evento al hacer click en el boton de rechazar trabajo
+     *
+     * @deprecated ya no existe esta funcion
+     */
+    @Deprecated
     public void clickReject() {
-        this.showVideo();
+
     }
 
+    /**
+     * Evento al hacer click en el boton de inicio
+     *
+     * @deprecated ya no existe esta funcion
+     */
+    @Deprecated
     public void clickHome() {
-        this.showVideo();
+
     }
 
+    /**
+     * Evento al hacer click en el boton de confirmar
+     *
+     * @deprecated ya no existe esta funcion
+     */
+    @Deprecated
     public void clickConfirm() {
-        this.showVideo();
+
     }
 
+    /**
+     * Evento al hacer click en el boton de ver el perfil
+     *
+     * @deprecated ya no existe esta funcion
+     */
+    @Deprecated
     public void clickProfile() {
-        this.showVideo();
+
     }
 
+    /**
+     * Evento al hacer click en el boton de ver ofertas
+     *
+     * @deprecated ya no existe esta funcion
+     */
+    @Deprecated
     public void clickOffers() {
-        this.showVideo();
+
     }
 
-    private String[] urls = new String[]{
-        "https://www.youtube.com/watch?v=fC7oUOUEEi4",
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ"};
-    private final Random rnd = new Random();
-
-    private void showVideo() {
-        try {
-            Desktop.getDesktop().browse(new URI(urls[rnd.nextInt(urls.length)]));
-        } catch (URISyntaxException | IOException ex) {
-            Logger.getLogger(HomeScreenEventHandler.class.getName())
-                    .log(Level.SEVERE, null, ex);
-        }
-    }
-
+    /**
+     * Evento que solicita al controlador los empleos interesantes que el
+     * usuario ha marcado con el fin de mostrarse
+     *
+     * @return una instancia de un objeto iterable por el que se pasan los
+     * empleos interesantes para el usuario
+     * @deprecated no se ha implementado la funcion en la aplicacion
+     */
+    @Deprecated
     public Iterable<Job> loadInterests() {
         return new ArrayList<>();
     }

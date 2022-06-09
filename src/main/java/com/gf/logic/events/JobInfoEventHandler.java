@@ -30,10 +30,21 @@ public class JobInfoEventHandler {
         }
     }
 
+    /**
+     * Evento al hacer click en el boton de buscar en googlem aps
+     *
+     * @param job el trabajo que se esta mostrando cuando se ha realizado esta
+     * solicitud de operacion
+     */
     public void clickGoogleButton(Job job) {
         this.showVideo();
     }
 
+    /**
+     * Evento al pulsar el boton de back
+     *
+     * @param job el trabajo que se estaba mostrando antes de pulsar el boton
+     */
     public void clickBackButton(Job job) {
         Controller.getView().showJobData(job);
     }

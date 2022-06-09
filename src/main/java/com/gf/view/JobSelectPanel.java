@@ -21,11 +21,23 @@ public class JobSelectPanel extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     * Establece el trabajo que se muestra en este panel.
+     *
+     * @param job el trabajo que se muestra o null si no se quiere mostrar
+     * ningun trabajo
+     */
     public void setJob(Job job) {
         this.job = job;
         updateJob();
     }
 
+    /**
+     * Obtiene el trabajo que muestra este panel
+     *
+     * @return el trabajo que muestra, puede ser nulo si no se esta mostrando
+     * ningun trabajo
+     */
     public Job getJob() {
         return this.job;
     }
@@ -217,6 +229,9 @@ public class JobSelectPanel extends javax.swing.JPanel {
         eventHandler.clickJob(this.getJob());
     }//GEN-LAST:event_jPanel1MouseReleased
 
+    /**
+     * Solicita al controlador un trabajo nuevo para mostrar
+     */
     public void requestJob() {
         this.setJob(eventHandler.requestNextJob());
     }

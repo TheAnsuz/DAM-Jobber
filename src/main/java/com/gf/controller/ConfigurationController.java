@@ -13,14 +13,25 @@ import java.util.function.Consumer;
 
 /**
  *
+ * Esta clase esta sacada de uno de mis proyectos privados por lo cual su
+ * javadoc esta en ingles
+ *
  * @author Adrian MRV. aka AMRV || Ansuz
  */
-public class ConfigurationController {
+public final class ConfigurationController {
 
-    public ConfigurationController() {
+    protected ConfigurationController() {
         this.reload();
     }
 
+    /**
+     * Obtiene la imagen por defecto de la aplicacion que será usada en caso de
+     * que no se pueda obtener una imagen concreta
+     *
+     * @param width ancho de la imagen
+     * @param height alto de la imagen
+     * @return la imagen por defecto con las dimensiones especificadas
+     */
     public BufferedImage getDefaultImage(int width, int height) {
         return ResourceIO.resourceImage("images/undefined.png", width, height);
     }
@@ -28,24 +39,9 @@ public class ConfigurationController {
     private final Map<String, String> values = new HashMap<>();
     private final List<ConfigurationControllerListener> listeners = new ArrayList<>();
 
-    public static final String FILE = "config.properties";
-    public static final char SEPARATOR = '=';
+    private static final String FILE = "config.properties";
+    private static final char SEPARATOR = '=';
 
-//    /**
-//     * This method will simply run at the start of the program, right after the
-//     * main class is processed and will add a hook to save the data to a file
-//     * whenever the application stops.
-//     */
-//    static {
-//        Controller.getConfiguration().reload();
-//        Runtime.getRuntime().addShutdownHook(new Thread() {
-//            @Override
-//            public void run() {
-//                Controller.getConfiguration().save();
-//            }
-//
-//        });
-//    }
     /**
      * Checks if the configuration file exists and can be read.
      *

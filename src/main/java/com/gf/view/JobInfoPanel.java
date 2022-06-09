@@ -26,11 +26,21 @@ public class JobInfoPanel extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     * Establece el trabajo que muestra este panel, no debe de ser nulo
+     *
+     * @param job el trabajo que muestra el panel
+     */
     public void setJob(Job job) {
         this.job = job;
         this.updateJob();
     }
 
+    /**
+     * Obtiene el trabajo que esta mostrando el panel
+     *
+     * @return el trabajo mostrado
+     */
     public Job getJob() {
         return this.job;
     }
