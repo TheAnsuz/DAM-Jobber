@@ -21,7 +21,7 @@ public class GlobalDAO {
             .getDefaultConfig("sql.port", "3306");
     private static String user = Controller.getConfiguration()
             .getDefaultConfig("sql.user", "root");
-    private static String passwd = Controller.getConfiguration()
+    private static String password = Controller.getConfiguration()
             .getDefaultConfig("sql.pass", "");
 
     /**
@@ -42,7 +42,7 @@ public class GlobalDAO {
      */
     public static Connection conectarBD() {
         try {
-            con = DriverManager.getConnection(getUrl());
+            con = DriverManager.getConnection(getUrl(), user, password);
         } catch (SQLException ex) {
             Controller.getView()
                     .showWarning("Error al conectar a la base de datos");
