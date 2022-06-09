@@ -1,0 +1,1 @@
+Realización de vistas, funciones del Controlador(intermediario)
