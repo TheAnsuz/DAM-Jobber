@@ -3,13 +3,13 @@ package com.gf.controller;
 import com.gf.entities.Job;
 import com.gf.logic.ResourceIO;
 import com.gf.view.HomeScreen;
-//import com.gf.view.InfoDialog;
 import com.gf.view.JobInfoPanel;
 import com.gf.view.JobSelectPanel;
 import com.gf.view.LoginScreen;
 import com.gf.view.RegisterScreen;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -47,7 +47,11 @@ public class ViewController {
     public void updateShownJobs() {
         this.home.updateInterests();
     }
-    
+
+    public JComponent getLastScreen() {
+        return lastPanel;
+    }
+
     public void back() {
         if (lastPanel == null) {
             return;

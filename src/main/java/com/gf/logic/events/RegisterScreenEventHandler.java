@@ -37,7 +37,7 @@ public class RegisterScreenEventHandler {
         }
 
         if (!Controller.getData().validateMail(mail)) {
-            Controller.getView().showWarning("El orreo electronico no valido");
+            Controller.getView().showWarning("El correo electrónico no válido");
             return false;
         }
 

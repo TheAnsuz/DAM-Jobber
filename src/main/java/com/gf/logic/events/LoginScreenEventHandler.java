@@ -38,7 +38,7 @@ public class LoginScreenEventHandler {
      */
     public void clickForgotPassword() {
         Controller.getView()
-                .showInfoDialog("UPS", "Error al obtener los empleos interesantes");
+                .showInfoDialog("UPS", "Que te hayas olvidado de tu contraseña no es mi problema");
     }
 
     /**
