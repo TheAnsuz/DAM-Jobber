@@ -38,7 +38,7 @@ public class InteresaDAO {
         } catch (SQLException ex) {
             ex.printStackTrace();
             Controller.getView()
-                    .showWarning("Error al conectar a la base de datos");
+                    .showWarning("Error al realizar la operación");
 //            JOptionPane.showMessageDialog(null, "Error de insercion", "Insert interesa", JOptionPane.ERROR_MESSAGE);
         }
         return resultado;
