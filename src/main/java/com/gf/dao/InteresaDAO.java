@@ -20,10 +20,17 @@ import javax.swing.JOptionPane;
  */
 public class InteresaDAO {
 
+    /**
+     * Inserta una columna en la tabla interesa cuando el usuario acepta o
+     * rechaza un empleo
+     *
+     * @param interesa
+     * @return Resultado para saber si la operación se ha realizado
+     */
     public int insertInteresa(Interesa interesa) {
         int resultado = 0;
         String sqlInsert = "";
-        try ( Connection con = GlobalDAO.conectarBD()) {
+        try (Connection con = GlobalDAO.conectarBD()) {
             sqlInsert = "INSERT INTO interesa (id_usuario, id_empleo, aceptado) VALUES (?, ?, ?)";
             PreparedStatement ps = con.prepareCall(sqlInsert);
             ps.setInt(1, interesa.getIdUsuario());
@@ -41,26 +48,26 @@ public class InteresaDAO {
         return resultado;
     }
 
-    public ArrayList selectInteresa() {
-        Interesa interesa = null;
-        ArrayList<Interesa> interesados = new ArrayList<>();
-        try ( Connection con = GlobalDAO.conectarBD()) {
-            String sqlSelect = "SELECT * FROM interesa where aceptado = 1";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(sqlSelect);
-            while (rs.next()) {
-                interesa = new Interesa(rs.getInt(1), rs.getInt(2), rs
-                        .getBoolean(3));
-                interesados.add(interesa);
-            }
-            rs.close();
-
-        } catch (SQLException ex) {
-            Controller.getView()
-                    .showWarning("Error al obtener los empleos interesantes");
-//            JOptionPane.showMessageDialog(null, "Error de select interesa-interesados", "Select interesa-empleos interesados", JOptionPane.ERROR_MESSAGE);
-        }
-        return interesados;
-    }
-
+//    public ArrayList selectInteresa() {
+//        Interesa interesa = null;
+//        ArrayList<Interesa> interesados = new ArrayList<>();
+//        try (Connection con = GlobalDAO.conectarBD()) {
+//            String sqlSelect = "SELECT * FROM interesa where aceptado = 1";
+//            Statement st = con.createStatement();
+//            ResultSet rs = st.executeQuery(sqlSelect);
+//            while (rs.next()) {
+//                interesa = new Interesa(rs.getInt(1), rs.getInt(2), rs
+//                        .getBoolean(3));
+//                interesados.add(interesa);
+//            }
+//            rs.close();
+//
+//        } catch (SQLException ex) {
+//            Controller.getView()
+//                    .showWarning("Error al obtener los empleos interesantes");
+////            JOptionPane.showMessageDialog(null, "Error de select interesa-interesados", "Select interesa-empleos interesados", JOptionPane.ERROR_MESSAGE);
+//        }
+//        return interesados;
+//    }
+    
 }

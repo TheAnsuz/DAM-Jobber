@@ -19,10 +19,17 @@ import javax.swing.JOptionPane;
  */
 public class UserDAO {
 
+    /**
+     * Inserta un usuario en la base de datos cuando es creado en el apartado
+     * register
+     *
+     * @param user
+     * @return Resultado para saber si la operación se ha realizado
+     */
     public int insertUser(User user) {
         int resultado = 0;
         String sqlInsert = "";
-        try ( Connection con = GlobalDAO.conectarBD()) {
+        try (Connection con = GlobalDAO.conectarBD()) {
             sqlInsert = "INSERT INTO usuarios (id_usuario, nombre_usuario, correo_usuario, contrasena_usuario) VALUES (null, ?, ?, ?)";
             PreparedStatement ps = con.prepareCall(sqlInsert);
             ps.setString(1, user.getUsername());
@@ -39,6 +46,14 @@ public class UserDAO {
         return resultado;
     }
 
+    /**
+     * Devuelve el usuario si se ha escrito bien el nombre y la contraseña al
+     * iniciar sesión
+     *
+     * @param nombre
+     * @param contrasena
+     * @return user
+     */
     public User validUser(String nombre, String contrasena) {
         if (nombre == null || contrasena == null) {
             return null;
@@ -46,7 +61,7 @@ public class UserDAO {
         if (nombre.trim().length() < 1 || contrasena.trim().length() < 1) {
             return null;
         }
-        try ( Connection con = GlobalDAO.conectarBD()) {
+        try (Connection con = GlobalDAO.conectarBD()) {
             if (con.isClosed()) {
                 return null;
             }
