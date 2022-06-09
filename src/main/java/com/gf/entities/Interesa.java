@@ -10,7 +10,7 @@ package com.gf.entities;
  */
 public class Interesa {
 
-    private int idUsuario;
+    private final int idUsuario;
     private int idEmpleo;
     private boolean aceptado;
 
@@ -18,8 +18,8 @@ public class Interesa {
      * Crea un objeto para almacenar los empleos que acepta, o no, el usuario
      *
      * @param idUsuario id del usuario
-     * @param idEmpleo
-     * @param aceptado
+     * @param idEmpleo id del empleo
+     * @param aceptado si el empleo ha sido aceptado o denegado
      */
     public Interesa(int idUsuario, int idEmpleo, boolean aceptado) {
         this.idUsuario = idUsuario;
@@ -37,18 +37,9 @@ public class Interesa {
     }
 
     /**
-     * Establece la id de usuario
-     *
-     * @param idUsuario
-     */
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    /**
      * Obtiene la id de empleo
      *
-     * @return idEmpleo
+     * @return la idEmpleo
      */
     public int getIdEmpleo() {
         return idEmpleo;
@@ -57,7 +48,7 @@ public class Interesa {
     /**
      * Establece la id de empleo
      *
-     * @param idEmpleo
+     * @param idEmpleo id del empleo
      */
     public void setIdEmpleo(int idEmpleo) {
         this.idEmpleo = idEmpleo;
@@ -75,7 +66,7 @@ public class Interesa {
     /**
      * Establece si el empleo ha sido aceptado
      *
-     * @param aceptado
+     * @param aceptado si el empleo debe de aceptarse o no
      */
     public void setAceptado(boolean aceptado) {
         this.aceptado = aceptado;

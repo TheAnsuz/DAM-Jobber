@@ -16,6 +16,9 @@ public class LoginScreen extends javax.swing.JDialog implements WindowListener {
 
     /**
      * Creates new form LoginScreen
+     *
+     * @param parent ventana raiz del dialogo
+     * @param modal si debe bloquear la ejecucion del programa
      */
     public LoginScreen(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

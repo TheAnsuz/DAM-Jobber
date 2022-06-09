@@ -16,6 +16,8 @@ public final class RegisterScreen extends javax.swing.JDialog implements WindowL
 
     /**
      * Creates new form RegisterScreen
+     * @param parent ventana raiz del dialogo
+     * @param modal si debe bloquear la ejecucion del programa
      */
     public RegisterScreen(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

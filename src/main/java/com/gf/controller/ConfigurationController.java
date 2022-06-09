@@ -148,7 +148,7 @@ public final class ConfigurationController {
      * of entry set iteration (if an iteration order is specified.) Exceptions
      * thrown by the action are relayed to the caller.
      *
-     * @implSpec The default implementation is equivalent to, for this
+     * The default implementation is equivalent to, for this
      * {@code map}:      <pre> {@code
      * for (Map.Entry<K, V> entry : map.entrySet())
      *     action.accept(entry.getKey(), entry.getValue());
@@ -227,7 +227,6 @@ public final class ConfigurationController {
      * side-effects that modify the underlying source of elements, unless an
      * overriding class has specified a concurrent modification policy.
      *
-     * @implSpec
      * <p>
      * The default implementation behaves as if:      <pre>{@code
      *     for (T t : this)

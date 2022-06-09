@@ -1,0 +1,7 @@
+com.gf.application
+com.gf.controller
+com.gf.dao
+com.gf.entities
+com.gf.logic
+com.gf.logic.events
+com.gf.view

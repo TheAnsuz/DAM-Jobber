@@ -20,7 +20,7 @@ public class InteresaDAO {
      * Inserta una columna en la tabla interesa cuando el usuario acepta o
      * rechaza un empleo
      *
-     * @param interesa
+     * @param interesa el objeto interesa para insertar
      * @return Resultado para saber si la operación se ha realizado
      */
     public int insertInteresa(Interesa interesa) {

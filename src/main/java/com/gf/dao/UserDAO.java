@@ -22,7 +22,7 @@ public class UserDAO {
      * Inserta un usuario en la base de datos cuando es creado en el apartado
      * register
      *
-     * @param user
+     * @param user el usuario a insertar
      * @return Resultado para saber si la operación se ha realizado
      */
     public int insertUser(User user) {
@@ -49,15 +49,15 @@ public class UserDAO {
      * Devuelve el usuario si se ha escrito bien el nombre y la contraseña al
      * iniciar sesión
      *
-     * @param nombre
-     * @param contrasena
-     * @return user
+     * @param nombre el nombre o nick de usuario
+     * @param clave la clave del usuario
+     * @return el usuario validado o null si no se valida
      */
-    public User validUser(String nombre, String contrasena) {
-        if (nombre == null || contrasena == null) {
+    public User validUser(String nombre, String clave) {
+        if (nombre == null || clave == null) {
             return null;
         }
-        if (nombre.trim().length() < 1 || contrasena.trim().length() < 1) {
+        if (nombre.trim().length() < 1 || clave.trim().length() < 1) {
             return null;
         }
         try (Connection con = GlobalDAO.conectarBD()) {
@@ -65,7 +65,7 @@ public class UserDAO {
                 return null;
             }
             String sqlSelect = "SELECT * FROM usuarios where nombre_usuario like '" + nombre + "' and contrasena_usuario like '" + Controller
-                    .getData().cipher(contrasena) + "'";
+                    .getData().cipher(clave) + "'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sqlSelect);
             if (rs.next()) {
