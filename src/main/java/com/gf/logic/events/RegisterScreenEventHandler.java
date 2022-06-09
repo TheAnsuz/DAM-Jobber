@@ -44,10 +44,12 @@ public class RegisterScreenEventHandler {
         if (!Controller.getData().validatePassword(clave1)) {
             Controller.getView()
                     .showWarning("Las contraseñas deben de tener 8 caracteres como minimo, contener mayusculas, minusculas, numeros y simbolos");
+            return false;
         }
 
         if (!Controller.getData().validatePassword(clave1, clave2)) {
             Controller.getView().showWarning("Las contraseñas no coinciden");
+            return false;
         }
 
         User user = new User(1, nombre.trim(), mail.trim(), Controller
