@@ -8,11 +8,7 @@ import com.gf.controller.Controller;
 import com.gf.entities.Interesa;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -69,5 +65,4 @@ public class InteresaDAO {
 //        }
 //        return interesados;
 //    }
-    
 }
